@@ -62,4 +62,45 @@ class RestauranteController extends Controller
             return $e->getMessage();
         }
     }
+
+    public function crear()
+    {
+        return view('crearPersona');
+    }
+
+    public function crearPost(PersonaCrear  $request){
+        $datos = $request->except('_token');
+        $request->validate([
+            'nombre'=>'required|string|max:30',
+            'precio'=>'required|string|max:30',
+        ]);
+        if($request->hasFile('foto_persona')){
+            $datos['foto_persona'] = $request->file('foto_persona')->store('uploads','public');
+        }else{
+            $datos['foto_persona'] = NULL;
+        }
+        return $datos;
+        try{
+            DB::beginTransaction();
+            $id = DB::table('tbl_persona')->insertGetId(["foto_persona"=>$datos['foto_persona'],"nombre_persona"=>$datos['nombre_persona'],"apellido_persona"=>$datos['apellido_persona'],"dni_persona"=>$datos['dni_persona'],"edad_persona"=>$datos['edad_persona']]);
+            DB::table('tbl_telef')->insertGetId(["num_telf"=>$datos['num_telf'],"num_telf2"=>$datos['num_telf2'],"id_persona"=>$id]);
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollBack();
+            return $e->getMessage();
+        }
+    }
+
+    /* eliminar */
+    public function eliminar($id){
+        try {
+            DB::beginTransaction();
+            DB::table('tbl_restaurante')->where('id','=',$id)->delete();
+            DB::commit();
+        }catch(\Exception $e) {
+            DB::rollback();
+            return $e->getMessage();
+        }
+        return redirect('mostrarRestaurante');
+    }
 }
