@@ -6,8 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script type="text/javascript" src="js/validacion.js"></script>
+  <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
+
 </head>
 <body class="login">
   @if($errors->any())
@@ -23,8 +23,7 @@
   <div class="row flex-cv">
     <div class="cuadro_login">
       <!-- formulario inicio de sesión-->
-      <form action="{{url('login')}}" method="POST"  onsubmit="return validar_user();">
-        <div class=alert id='mensaje'>
+      <form action="{{url('loginPost')}}" method="POST"  onsubmit="return validar_user();">
           @csrf
           {{method_field('POST')}}
           <br>

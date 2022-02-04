@@ -12,6 +12,15 @@ class RestauranteController extends Controller
 {
     /*LOGIN*/
 
+    public function inicio(){
+        return view ('inicio');
+    }
+    
+    public function mostrarRestaurante(){
+        $listaRestaurantes = DB::table('tbl_restaurante')->get();
+        return view('mostrarRestaurantes', compact('listaRestaurantes'));
+    }
+
     public function login(){
         return view ('login');
     }
@@ -23,17 +32,29 @@ class RestauranteController extends Controller
             'email'=>'required',
             'password'=>'required'
         ]);
-        $user=DB::table("tbl_usuario")->where('email','=',$datos['email'])->where('password','=',$datos['password'])->count();
-        if($user==1){
-            DB::table("tbl_usuario")->select('tipo')->where('email','=',$datos['email'])->where('password','=',$datos['password'])->first();
-            return redirect('/mostrar');
+        $email=$datos['email'];
+        $password=md5($datos['password']);
+        
+        $users = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->count();
+        $user = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->first();
+        if($users == 1){
+            //Establecer la sesion
+            $request->session()->put('email',$request->email);
+            $request->session()->put('tipouser',$user->tipo);
+            return redirect('/mostrarRestaurantes');
+        }else{
+            //Redirigir al login
+            return redirect('/login');
         }
-        else{
-            return redirect('');
-        }
-        return $user;
     }
 
+    public function logout(Request $request){
+        //Olvidar una sesion en especifico
+            //$request->session()->forget('email');
+        //Eliminar todas las variables de sesion
+        $request->session()->flush();
+        return redirect('/');
+    }
     /*REGISTRO*/
 
     public function registro()
@@ -66,29 +87,6 @@ class RestauranteController extends Controller
     public function crear()
     {
         return view('crearPersona');
-    }
-
-    public function crearPost(PersonaCrear  $request){
-        $datos = $request->except('_token');
-        $request->validate([
-            'nombre'=>'required|string|max:30',
-            'precio'=>'required|string|max:30',
-        ]);
-        if($request->hasFile('foto_persona')){
-            $datos['foto_persona'] = $request->file('foto_persona')->store('uploads','public');
-        }else{
-            $datos['foto_persona'] = NULL;
-        }
-        return $datos;
-        try{
-            DB::beginTransaction();
-            $id = DB::table('tbl_persona')->insertGetId(["foto_persona"=>$datos['foto_persona'],"nombre_persona"=>$datos['nombre_persona'],"apellido_persona"=>$datos['apellido_persona'],"dni_persona"=>$datos['dni_persona'],"edad_persona"=>$datos['edad_persona']]);
-            DB::table('tbl_telef')->insertGetId(["num_telf"=>$datos['num_telf'],"num_telf2"=>$datos['num_telf2'],"id_persona"=>$id]);
-            DB::commit();
-        }catch(\Exception $e){
-            DB::rollBack();
-            return $e->getMessage();
-        }
     }
 
     /* eliminar */
