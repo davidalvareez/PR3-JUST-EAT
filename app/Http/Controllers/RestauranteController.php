@@ -15,14 +15,14 @@ class RestauranteController extends Controller
     public function inicio(){
         return view ('inicio');
     }
-
-    public function login(){
-        return view ('login');
-    }
-
+    
     public function mostrarRestaurante(){
         $listaRestaurantes = DB::table('tbl_restaurante')->get();
         return view('mostrarRestaurantes', compact('listaRestaurantes'));
+    }
+
+    public function login(){
+        return view ('login');
     }
 
     public function loginPost(Request $request){
@@ -32,17 +32,29 @@ class RestauranteController extends Controller
             'email'=>'required',
             'password'=>'required'
         ]);
-        $user=DB::table("tbl_usuario")->where('email','=',$datos['email'])->where('password','=',$datos['password'])->count();
-        if($user==1){
-            DB::table("tbl_usuario")->select('tipo')->where('email','=',$datos['email'])->where('password','=',$datos['password'])->first();
-            return redirect('/mostrar');
+        $email=$datos['email'];
+        $password=md5($datos['password']);
+        
+        $users = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->count();
+        $user = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->first();
+        if($users == 1){
+            //Establecer la sesion
+            $request->session()->put('email',$request->email);
+            $request->session()->put('tipouser',$user->tipo);
+            return redirect('/mostrarRestaurantes');
+        }else{
+            //Redirigir al login
+            return redirect('/login');
         }
-        else{
-            return redirect('');
-        }
-        return $user;
     }
 
+    public function logout(Request $request){
+        //Olvidar una sesion en especifico
+            //$request->session()->forget('email');
+        //Eliminar todas las variables de sesion
+        $request->session()->flush();
+        return redirect('/');
+    }
     /*REGISTRO*/
 
     public function registro()
@@ -70,5 +82,15 @@ class RestauranteController extends Controller
             DB::rollBack();
             return $e->getMessage();
         }
+    }
+
+    //Zona filtro
+
+    public function leer(Request $request){
+        $datos=DB::select('SELECT r.*, GROUP_CONCAT(t.categoria) as categorias FROM `tbl_restaurante` r
+        LEFT JOIN `tbl_num_tipos` nt on r.id=nt.id_restaurante
+        LEFT JOIN `tbl_tipo` t on nt.id_tipo=t.id
+        GROUP BY r.id HAVING r.nombre like ?',[$request->input('filtro').'%']);
+        return response()->json($datos);
     }
 }

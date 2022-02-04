@@ -17,6 +17,4 @@ function validar_user() {
     } else {
         return true
     }
-} >>>
->>>
-> devlaura
+}

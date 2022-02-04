@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device=width, initial-scale=1.0">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script type="text/javascript" src="js/validacion.js"></script>
+    <script type="text/javascript" src="../../js/validacion.js"></script>
+    <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
     <title>Registro</title>
 </head>
 <body>
@@ -18,7 +18,7 @@
         </ul>
     </div>
     @endif
-    <form action="{{url('registro')}}" method="POST" enctype="multipart/form-data" onsubmit="return validar_user()">
+    <form action="{{url('registroPost')}}" method="POST" enctype="multipart/form-data" onsubmit="return validar_user()">
         <div class=alert id='mensaje'>
         @csrf
         <p>Email</p>
