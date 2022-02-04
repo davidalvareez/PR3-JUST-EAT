@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/fontawesome/css/all.css') !!}">
     <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
-    <script src="./script.js"></script>
+    {{-- <script src="./script.js"></script> --}}
+    <script src="js/ajax.js"></script>
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Just Eaten</title>
 </head>
 <body>
@@ -21,8 +23,8 @@
             <tr>
                 <td class="td25">
                     <form action="">
-                        <span class="">Nombre</span>
-                        <input class="" type="text" name="" id="">
+                        <span class="">NombreFiltro</span>
+                        <input class="" type="text" onkeyup="leerJS()" name="" id="filtro">
                         <br>
                         <span class="" >Nombre</span>
                         <input class=""type="text" name="" id="">
@@ -34,21 +36,10 @@
                     </form>
                 </td>
                 <td class="td75">
-                    @foreach($listaRestaurantes as $restaurante)
-                        <div class="cartaproductos">
-                            <table class="tablaproductos">
-                                <tr>
-
-                                        <td class="td25">{{$restaurante->nombre}}</td>
-                                        <td class="td25">
-                                            {{$restaurante->precio}}
-                                            {{$restaurante->nacionalidad}}
-                                        </td>
-                                        <td class="td50">Botonoes admin</td>
-                                </tr>
-                            </table>
-                        </div>
-                    @endforeach
+                    <div class="cartaproductos">
+                        <table class="tablaproductos" id="tablaproductos">
+                        </table>
+                    </div>
                 </td>
             </tr>
         </table>

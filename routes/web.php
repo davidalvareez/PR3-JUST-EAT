@@ -18,3 +18,6 @@ Route::get("logout",[RestauranteController::class,'logout']);
 //ruta para el registro de usuarios
 Route::get('registro',[RestauranteController::class, 'registro']);
 Route::post('registroPost',[RestauranteController::class, 'registroPost']);
+
+//ruta para mostrar y filtro
+Route::post('leer',[RestauranteController::class, 'leer']);
