@@ -1,18 +1,16 @@
 <?php
 
+use App\Http\Controllers\RestauranteController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+//ruta para el login
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('', [RestauranteController::class, 'login']);
+
+Route::post('login',[RestauranteController::class, 'loginPost']);
+
+//ruta para el registro de usuarios
+
+Route::get('registro',[RestauranteController::class, 'registro']);
+
+Route::post('registro',[RestauranteController::class, 'registroPost']);
