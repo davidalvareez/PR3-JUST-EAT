@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+*{
+    margin: 0;
+    font-family: 'Fjalla One', sans-serif;
+}
+
+/*Header*/
+.h1headerizq{
+    float: left;
+    margin-left:4.2rem;
+    margin-top:1.2rem;
+    color:black;
+}
+.h1headerder{
+    float: right;
+    margin-right:4.2rem;
+    margin-top:1.2rem;
+    color:black;
+}
+/*Fin header*/
+
+
+/*Fondo pantalla inicio*/
+.fondo{
+    width: 100%;
+    height:25rem;
+    background-image: url("../../../PR3-JUST-EAT/storage/app/public/uploads/fondo.jpg");
+    position:absolute;
+    z-index:0;
+    background-position: center;
+    background-size: cover;
+    
+}
+/*Final fondo pantalla inicio*/
+
+/*Div mensaje*/
+.mensaje{
+    margin-left: 18rem;
+    margin-top: 18.5rem;
+    background-color: white;
+    position:absolute;
+    z-index:1;
+    border-radius: 10px;
+    width: 50rem;
+    height: 8rem;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 9px 2px -2px orangered;
+}
+.h1mensaje{
+    padding-top: 1.6rem;
+    margin-bottom: 0.5rem;
+    color:orangered;
+}
+/*Fin div mensaje*/
+
+/*Div contenido*/
+.contenido{
+    padding-top:30rem;
+}
+.txtcontenido{
+    margin-left: 5rem;
+    color:orangered;
+}
+.txtcontenido2{
+    margin-top: 1rem;
+    margin-left: 5rem;
+}
+/*Fin div contenido*/
+.carrusel{
+    margin-top:0.5rem;
+}
+/*Cartas de informacion*/
+
+.mensaje2{
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    background-color: orangered;
+    z-index:1;
+    border-radius: 10px;
+    width: 11rem;
+    height: 8rem;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 4px -1px orangered;
+}
+.h3mensaje2{
+    margin-top:1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.imgcomida{
+    width: 11rem;
+    height: 8rem;
+    border-radius:4px;
+}
+.td25{
+    width: 25%;
+}
+.td50{
+    width: 50%;
+}
+.td75{
+    width: 75%;
+}
+.contenido2{
+    margin-left: 4rem;
+    padding-top:10rem;
+}
+.productos{
+    margin-top: 1rem;
+    padding-right: 5rem;
+    width:100%;
+}
+.cartaproductos{
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    background-color: white;
+    border-radius: 10px;
+    width: auto;
+    height: 8rem;
+    box-shadow: 0 6px 4px -1px grey;
+}
+.tablaproductos{
+    width: 100%;
+}
