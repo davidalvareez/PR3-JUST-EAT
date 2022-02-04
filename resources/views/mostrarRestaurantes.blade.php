@@ -18,8 +18,29 @@
     </div>
     <div class="contenido2">
         <h1>Puedes filtrar entre todos nuestros tipos de comida!</h1>
-        <input type="text" onkeyup="leerJS()" id="filtro">
-        <table class="productos" id="productos">
+        <table class="productos">
+            <tr>
+                <td class="td25">
+                    <form action="">
+                        <span class="">NombreFiltro</span>
+                        <input class="" type="text" onkeyup="leerJS()" name="" id="filtro">
+                        <br>
+                        <span class="" >Nombre</span>
+                        <input class=""type="text" name="" id="">
+                        <span>Nombre</span>
+                        <input class=""type="text" name="" id="">
+                        <span class="">Nombre</span>
+                        <input class=""type="text" name="" id="">
+                        <input type="submit" value="Filtrar">
+                    </form>
+                </td>
+                <td class="td75">
+                    <div class="cartaproductos">
+                        <table class="tablaproductos" id="tablaproductos">
+                        </table>
+                    </div>
+                </td>
+            </tr>
         </table>
     </div>
 </body>

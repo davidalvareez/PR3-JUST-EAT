@@ -20,7 +20,7 @@ function objetoAjax() {
 }
 
 function leerJS() {
-    var tabla = document.getElementById("productos");
+    var tabla = document.getElementById("tablaproductos");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
