@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/fontawesome/css/all.css') !!}">
-    <script src="./script.js"></script>
+    {{-- <script src="./script.js"></script> --}}
+    <script src="js/ajax.js"></script>
+    <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Just Eaten</title>
 </head>
 <body>
@@ -16,40 +18,8 @@
     </div>
     <div class="contenido2">
         <h1>Puedes filtrar entre todos nuestros tipos de comida!</h1>
-        <table class="productos">
-            <tr>
-                <td class="td25">
-                    <form action="">
-                        <span class="">Nombre</span>
-                        <input class="" type="text" name="" id="">
-                        <br>
-                        <span class="" >Nombre</span>
-                        <input class=""type="text" name="" id="">
-                        <span>Nombre</span>
-                        <input class=""type="text" name="" id="">
-                        <span class="">Nombre</span>
-                        <input class=""type="text" name="" id="">
-                        <input type="submit" value="Filtrar">
-                    </form>
-                </td>
-                <td class="td75">
-                    @foreach($listaRestaurantes as $restaurante)
-                        <div class="cartaproductos">
-                            <table class="tablaproductos">
-                                <tr>
-
-                                        <td class="td25">{{$restaurante->nombre}}</td>
-                                        <td class="td25">
-                                            {{$restaurante->precio}}
-                                            {{$restaurante->nacionalidad}}
-                                        </td>
-                                        <td class="td50">Botonoes admin</td>
-                                </tr>
-                            </table>
-                        </div>
-                    @endforeach
-                </td>
-            </tr>
+        <input type="text" onkeyup="leerJS()" id="filtro">
+        <table class="productos" id="productos">
         </table>
     </div>
 </body>
