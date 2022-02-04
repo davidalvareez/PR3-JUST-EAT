@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script type="text/javascript" src="js/validacion.js"></script>
 </head>
 <body class="login">
   @if($errors->any())
@@ -19,10 +21,10 @@
   </div>
   @endif
   <div class="row flex-cv">
-    <div class=alert id='mensaje'>
     <div class="cuadro_login">
       <!-- formulario inicio de sesión-->
       <form action="{{url('login')}}" method="POST"  onsubmit="return validar_user();">
+        <div class=alert id='mensaje'>
           @csrf
           {{method_field('POST')}}
           <br>
@@ -31,14 +33,14 @@
           <div class="form-group">
             <p>Email:</p>
             <div>
-              <input class="inputlogin" id="email" type="text" name="email" placeholder="Introduce tu email" value="{{old('email')}}">
+              <input type="email" id="email" type="email" name="email" placeholder="Introduce tu email" value="{{old('email')}}">
             </div>
           </div>
           <br>
           <div class="form-group">
             <p>Contraseña:</p>
             <div>
-              <input class="inputlogin" id="password" type="password" name="password" placeholder="Introduce la contraseña">
+              <input type="password" id="password" name="password" placeholder="Introduce la contraseña">
             </div>
           </div>
           <br><br>
@@ -51,6 +53,5 @@
       </form>
     </div>
   </div>
-  <script type="text/javascript" src="../../js/validacion.js"></script>
 </body>
 </html>
