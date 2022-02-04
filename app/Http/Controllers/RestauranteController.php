@@ -12,8 +12,17 @@ class RestauranteController extends Controller
 {
     /*LOGIN*/
 
+    public function inicio(){
+        return view ('inicio');
+    }
+
     public function login(){
         return view ('login');
+    }
+
+    public function mostrarRestaurante(){
+        $listaRestaurantes = DB::table('tbl_restaurante')->get();
+        return view('mostrarRestaurantes', compact('listaRestaurantes'));
     }
 
     public function loginPost(Request $request){
