@@ -22,7 +22,7 @@
     <div class=alert id='mensaje'>
     <div class="cuadro_login">
       <!-- formulario inicio de sesión-->
-      <form action="{{url('login')}}" method="POST"  onsubmit="return validar_user();">
+      <form action="{{url('loginPost')}}" method="POST"  onsubmit="return validar_user();">
           @csrf
           {{method_field('POST')}}
           <br>
