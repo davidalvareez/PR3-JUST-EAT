@@ -12,6 +12,9 @@ Route::get('/mostrarRestaurantes',[RestauranteController::class, 'mostrarRestaur
 Route::get('login', [RestauranteController::class, 'login']);
 Route::post('loginPost',[RestauranteController::class, 'loginPost']);
 
+//ruta para el logout
+Route::get("logout",[RestauranteController::class,'logout']);
+
 //ruta para el registro de usuarios
 Route::get('registro',[RestauranteController::class, 'registro']);
 Route::post('registroPost',[RestauranteController::class, 'registroPost']);

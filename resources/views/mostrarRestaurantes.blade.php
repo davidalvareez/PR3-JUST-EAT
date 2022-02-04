@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/fontawesome/css/all.css') !!}">
+    <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
     {{-- <script src="./script.js"></script> --}}
     <script src="js/ajax.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
@@ -14,7 +15,7 @@
 <body>
     <div class="fondo2">
         <h1 class="h1headerizq"><i class="fas fa-utensils"></i> Just Eaten</h1>
-        <h3 class="h1headerder"><i onclick="window.location=''" class="fas fa-sign-out-alt fa-2x"></i></h3>
+        <h3 class="h1headerder"><i onclick='window.location="{{url("/logout")}}"' class="fas fa-sign-out-alt fa-2x"></i></h3>
     </div>
     <div class="contenido2">
         <h1>Puedes filtrar entre todos nuestros tipos de comida!</h1>
