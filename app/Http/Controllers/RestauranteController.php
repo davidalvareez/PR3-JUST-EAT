@@ -72,7 +72,7 @@ class RestauranteController extends Controller
         try{
             DB::beginTransaction();
             /*insertar datos en la base de datos*/
-            DB::table('tbl_usuario')->insert(["email"=>$datos['email'],"password"=>$datos['password'],"tipo"=>$datos['tipo']]);
+            DB::table('tbl_usuario')->insert(["email"=>$datos['email'],"password"=>md5($datos['password']),"tipo"=>$datos['tipo']]);
             DB::commit();
             /*?>
             <script>alert("Usuario registrado")</script>
