@@ -6,13 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
-<<<<<<< HEAD
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script type="text/javascript" src="js/validacion.js"></script>
-=======
   <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
 
->>>>>>> 6efde209fa8ce7ddf7b64e84c1fdf38857cc0202
 </head>
 <body class="login">
   @if($errors->any())
