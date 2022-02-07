@@ -22,24 +22,13 @@
         <table class="productos">
             <tr>
                 <td class="td25">
-                    <form action="">
-                        <span class="">NombreFiltro</span>
-                        <input class="" type="text" onkeyup="leerJS()" name="" id="filtro">
-                        <br>
-                        <span class="" >Nombre</span>
-                        <input class=""type="text" name="" id="">
-                        <span>Nombre</span>
-                        <input class=""type="text" name="" id="">
-                        <span class="">Nombre</span>
-                        <input class=""type="text" name="" id="">
-                        <input type="submit" value="Filtrar">
-                    </form>
+                    <span class="">NombreFiltro</span>
+                    <input class="" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
+                    <span class="">Todas las cocinas A-Z</span>
+                    <ul id="lateral">
+                    </ul>
                 </td>
-                <td class="td75">
-                    <div class="cartaproductos">
-                        <table class="tablaproductos" id="tablaproductos">
-                        </table>
-                    </div>
+                <td class="td75" id="tablaproductos">
                 </td>
             </tr>
         </table>

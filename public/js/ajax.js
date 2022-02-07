@@ -21,6 +21,7 @@ function objetoAjax() {
 
 function leerJS() {
     var tabla = document.getElementById("tablaproductos");
+    var lateral = document.getElementById("lateral");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
@@ -32,18 +33,28 @@ function leerJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            var datos = respuesta.datos;
+            var cocinas = respuesta.cocinas;
             var recarga = '';
-            recarga += '<tr><th>Nombre</th><th>Precio</th><th>Nacionalidad</th><th>Categorias</th></tr>';
+            var ul = '';
             /* Leerá la respuesta que es devuelta por el controlador: */
-            for (let i = 0; i < respuesta.length; i++) {
+            for (let i = 0; i < datos.length; i++) {
+                recarga += '<div class="cartaproductos">';
+                recarga += '<table class="tablaproductos">';
                 recarga += '<tr>';
-                recarga += '<td>' + respuesta[i].nombre + '</td>';
-                recarga += '<td>' + respuesta[i].precio + '</td>';
-                recarga += '<td>' + respuesta[i].nacionalidad + '</td>';
-                recarga += '<td>' + respuesta[i].categorias + '</td>';
+                recarga += '<td>' + datos[i].nombre + '</td>';
+                recarga += '<td>' + datos[i].precio + '</td>';
+                recarga += '<td>' + datos[i].nacionalidad + '</td>';
+                recarga += '<td>' + datos[i].categorias + '</td>';
                 recarga += '</tr>';
+                recarga += '</table>';
+                recarga += '</div>';
+            }
+            for (let j = 0; j < cocinas.length; j++) {
+                ul += '<li>' + cocinas[j].categoria + '</li>';
             }
             tabla.innerHTML = recarga;
+            lateral.innerHTML = ul;
         }
         /* else if (this.readyState != 4 || this.status != 200) {
                    alert(this.responseText);

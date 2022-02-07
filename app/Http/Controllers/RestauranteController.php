@@ -91,6 +91,11 @@ class RestauranteController extends Controller
         LEFT JOIN `tbl_num_tipos` nt on r.id=nt.id_restaurante
         LEFT JOIN `tbl_tipo` t on nt.id_tipo=t.id
         GROUP BY r.id HAVING r.nombre like ?',[$request->input('filtro').'%']);
-        return response()->json($datos);
+        $cocinas=DB::select('SELECT categoria FROM `tbl_tipo`');
+        return response()->json(array(
+            'datos' => $datos,
+            'cocinas' => $cocinas,
+
+        ));
     }
 }
