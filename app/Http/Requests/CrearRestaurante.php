@@ -26,9 +26,9 @@ class CrearRestaurante extends FormRequest
         return [
             'nombre'=>'required|string|max:100',
             'precio'=>'required|string|max:100',
-            'foto'=>'required|string|max:250|min:10',
-            'nacionalidad'=>'required|string|max:100'
-            //
+            'foto'=>'required|mimes:jpg,png,webp,svg',
+            'nacionalidad'=>'required|string|max:100',
+            'tipo'=>'required|string|max:100'
         ];
     }
 }

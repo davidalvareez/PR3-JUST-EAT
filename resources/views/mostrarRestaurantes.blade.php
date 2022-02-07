@@ -54,7 +54,9 @@
                                 </td>
                                 @if(Session::get('tipouser') == 'admin')
                                     <td class="td50">
-                                        <td class="td25"><button>Modificar</button></td>
+                                        <td class="td25"><form action="{{url('modificar/'.$restaurante->id)}}" method="GET">
+                                            <button class= "" type="submit" name="Modificar" value="Modificar">Modificar</button>
+                                        </form></td>
                                         <td class="td25"><form action="{{url('eliminar/'.$restaurante->id)}}" method="POST">
                                             @csrf
                                             {{method_field('DELETE')}}

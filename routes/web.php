@@ -17,7 +17,11 @@ Route::get("logout",[RestauranteController::class,'logout']);
 
 //ruta para crear
 Route::get("crear",[RestauranteController::class,'crear']);
-Route::get("crearPost",[RestauranteController::class,'crearPost']);
+Route::post("crearPost",[RestauranteController::class,'crearPost']);
+
+//ruta para modificar
+Route::get('/modificar/{id}', [RestauranteController::class, 'modificar']);
+Route::put('/modificarPut', [RestauranteController::class, 'modificarPut']);
 
 //ruta para eliminar
 Route::delete('/eliminar/{id}', [PersonaController::class, 'eliminar']);

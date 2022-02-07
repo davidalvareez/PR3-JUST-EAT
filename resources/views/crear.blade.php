@@ -16,7 +16,7 @@
         </ul>
     </div>
     @endif
-    <form action="{{url('crear')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{url('crearPost')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <p>Nombre</p>
         <input type="text" name="nombre" placeholder="Introduce el nombre..." value="{{old('nombre')}}">
@@ -32,6 +32,18 @@
         @enderror
         <p>Nacionalidad</p>
         <input type="text" name="nacionalidad" placeholder="Introduce la nacionalidad...">
+        @error('nacionalidad')
+        <br>
+        {{$message}}
+        @enderror
+        <p>Tipo</p>
+        <input type="text" name="tipo" placeholder="Introduce el primer tipo...">
+        @error('nacionalidad')
+        <br>
+        {{$message}}
+        @enderror
+        <p>Segundo tipo</p>
+        <input type="text" name="tipo2" placeholder="Introduce el segundo tipo...">
         @error('nacionalidad')
         <br>
         {{$message}}
