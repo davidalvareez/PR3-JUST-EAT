@@ -47,8 +47,8 @@ function leerJS() {
                     recarga += '<td>No hay foto</td>';
                 }*/
                 recarga += '<td><button onclick="eliminarJS(' + respuesta[i].id + ');">Eliminar</button>' +
-                '<input type="hidden" name="_method" value="eliminar" id="eliminar' + respuesta[i].id + '">' +
-                '</td>';
+                    '<input type="hidden" name="_method" value="eliminar" id="eliminar' + respuesta[i].id + '">' +
+                    '</td>';
                 recarga += '</tr>';
             }
             tabla.innerHTML = recarga;
@@ -56,28 +56,29 @@ function leerJS() {
     }
     ajax.send(formData);
 }
-        /* else if (this.readyState != 4 || this.status != 200) {
-                   alert(this.responseText);
-               } */
+/* else if (this.readyState != 4 || this.status != 200) {
+           alert(this.responseText);
+       } */
 
-        function eliminarJS(id){
-            var formData = new FormData();
-            formData.append('_token', document.getElementById('token').getAttribute("content"));
-            formData.append('_method', getElementById('eliminar' + id).value);
+function eliminarJS(id) {
+    var formData = new FormData();
+    formData.append('_token', document.getElementById('token').getAttribute("content"));
+    formData.append('_method', getElementById('eliminar' + id).value);
 
-            var ajax = objetoAjax();
+    var ajax = objetoAjax();
 
-            ajax.open("POST", "eliminar/" + id, true);
-            ajax.onreadystatechange = function() {
-                if (ajax.readyState == 4 && ajax.status == 200) {
-                    var respuesta = JSON.parse(this.responseText);
-                    if (respuesta.resultado == "OK") {
-                        document.getElementById('mensaje').innerHTML = 'Registro eliminado correctamente';ç
-                    }else{
-                        docuemnt.getElementById('mensaje').innerHTML = 'Error';
-                    }
-                    leerJS();
-                }
+    ajax.open("POST", "eliminar/" + id, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            var respuesta = JSON.parse(this.responseText);
+            if (respuesta.resultado == "OK") {
+                document.getElementById('mensaje').innerHTML = 'Registro eliminado correctamente';
+                ç
+            } else {
+                docuemnt.getElementById('mensaje').innerHTML = 'Error';
             }
-            ajax.send(formData);
+            leerJS();
         }
+    }
+    ajax.send(formData);
+}

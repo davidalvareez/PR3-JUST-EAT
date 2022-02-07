@@ -12,16 +12,18 @@
 </head>
 <body>
     <div class="fondo">
-        <h1 class="h1headerizq"><i class="fas fa-utensils"></i> Just Eaten</h1>
+        <div class="logo">
+            <h1 class="h1headerizq"><i class="fas fa-utensils"></i> Just Eaten</h1>
+        </div>
         <h3 class="h1headerder"><i onclick='window.location="{{url("/login")}}"' class="fas fa-user fa-2x"></i></h3>
     </div>
     <div class="mensaje">
         <h1 class="h1mensaje">Ponte las botas a tu gusto</h1>
-        <h2 class="h3mensaje">Selecciona tu tipo de cocina favorito</h2>
+        <h2 class="h3mensaje">Inicia sesión para ver todos los restaurantes que tienes disponibles</h2>
     </div>
     <div class="contenido">
         <h1 class="txtcontenido">Elige el tipo de comida que mas te plazca</h1>
-        <p class="txtcontenido2">¡Tenemos mas de 50 tipos de comida para ti!</p>
+        <p class="txtcontenido2">¡Tenemos más de 50 tipos de comida para ti!</p>
         <div class="carrusel">
             <center>
                 <table class="tablacomida">

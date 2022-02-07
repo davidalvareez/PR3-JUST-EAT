@@ -7,16 +7,25 @@
 
 /*Header*/
 .h1headerizq{
-    float: left;
-    margin-left:4.2rem;
-    margin-top:1.2rem;
-    color:black;
+    color:orangered;
 }
 .h1headerder{
     float: right;
     margin-right:4.2rem;
-    margin-top:1.2rem;
+    margin-top:-1.5rem;
     color:black;
+}
+.logo{
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    background-color: white;
+    z-index:1;
+    border-radius: 10px;
+    width: 12rem;
+    height: 2.5rem;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 9px 2px -2px orangered;
 }
 /*Fin header*/
 
@@ -87,6 +96,7 @@
 }
 .h3mensaje2{
     margin-top:1rem;
+    margin-left: 1.5rem;
     text-align: center;
     margin-bottom: 1rem;
 }
@@ -105,8 +115,11 @@
     width: 75%;
 }
 .contenido2{
-    margin-left: 4rem;
-    padding-top:10rem;
+    margin:0;
+    margin-top: 3rem;
+    padding-left: 2rem;
+    padding-top: 1rem;
+    background-color: rgba(128, 128, 128, 0.198);
 }
 .productos{
     margin-top: 1rem;

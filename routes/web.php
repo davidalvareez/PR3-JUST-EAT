@@ -26,6 +26,9 @@ Route::delete('/eliminar/{id}', [PersonaController::class, 'eliminar']);
 Route::get('registro',[RestauranteController::class, 'registro']);
 Route::post('registroPost',[RestauranteController::class, 'registroPost']);
 
+//ruta para eliminar
+Route::delete('/eliminar/{id}', [RestauranteController::class, 'eliminar']);
+
 //ruta para mostrar y filtro
 Route::post('leer',[RestauranteController::class, 'leer']);
 
