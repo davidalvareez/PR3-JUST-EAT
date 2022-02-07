@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/fontawesome/css/all.css') !!}">
-    <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
+    {{-- <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}"> --}}
     {{-- <script src="./script.js"></script> --}}
     <script src="js/ajax.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
@@ -30,21 +30,13 @@
                     <ul id="lateral">
                     </ul>
                 </td>
-<<<<<<< HEAD
                 <td class="td75" id="tablaproductos">
-=======
-                <td class="td75">
                     @foreach($listaRestaurantes as $restaurante)
                         <div class="cartaproductos">
                             <table class="tablaproductos">
-                                <td class="td25">
-                                    <img style="width:200px; height:120px;" src="{{asset('storage/uploads/hamburguesas.png')}}">
+                                <td class="td25 image">
                                 </td>
-                                <td class="td25">
-                                    <h2>{{$restaurante->nombre}}</h1>
-                                    <br>
-                                    <br>
-                                    <p>Precio medio: {{$restaurante->precio}} · {{$restaurante->nacionalidad}}</p>
+                                <td class="td25 campos">
                                 </td>
                                 @if(Session::get('tipouser') == 'admin')
                                     <td class="td50">
@@ -64,7 +56,6 @@
                             </table>
                         </div>
                     @endforeach
->>>>>>> main
                 </td>
             </tr>
         </table>
