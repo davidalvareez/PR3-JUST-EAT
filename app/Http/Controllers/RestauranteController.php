@@ -104,16 +104,15 @@ class RestauranteController extends Controller
         }else{
             $datos['foto'] = NULL;
         }
-        return $datos;
         try{
             DB::beginTransaction();
-            DB::table('tbl_restaurante')->insertGetId(["foto"=>$datos['foto'],"nombre"=>$datos['nombre'],"precio"=>$datos['precio'],"nacionalidad"=>$datos['nacionalidad'],"tipo"=>$datos['tipo'],"tipo2"=>$datos['tipo2']]);
+            DB::table('tbl_restaurante')->insert(["foto"=>$datos['foto'],"nombre"=>$datos['nombre'],"precio"=>$datos['precio'],"nacionalidad"=>$datos['nacionalidad'],"tipo"=>$datos['tipo'],"tipo2"=>$datos['tipo2']]);
             DB::commit();
+            return redirect('mostrarRestaurantes');
         }catch(\Exception $e){
             DB::rollBack();
             return $e->getMessage();
         }
-        return redirect('');
     }
 
     //eliminar
