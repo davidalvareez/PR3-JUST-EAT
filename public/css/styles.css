@@ -105,8 +105,14 @@
     height: 8rem;
     border-radius:4px;
 }
+.td20{
+    width:20%;
+}
 .td25{
     width: 25%;
+}
+.td40{
+    width:40%;
 }
 .td50{
     width: 50%;

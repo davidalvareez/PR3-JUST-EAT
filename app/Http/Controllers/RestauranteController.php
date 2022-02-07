@@ -67,16 +67,14 @@ class RestauranteController extends Controller
         /*validación registro de usuarios*/
         $request->validate([
             'email'=>'required|unique:tbl_usuario,email|string|max:100',
-            'password'=>'required|string|min:8|max:100'
+            'password'=>'required|string|min:8|max:100',
+            'passwordvalidar'=>'required|same:password'
         ]);
         try{
             DB::beginTransaction();
             /*insertar datos en la base de datos*/
-            DB::table('tbl_usuario')->insert(["email"=>$datos['email'],"password"=>$datos['password'],"tipo"=>$datos['tipo']]);
+            DB::table('tbl_usuario')->insert(["email"=>$datos['email'],"password"=>md5($datos['password']),"passwordvalidar"=>md5($datos['passwordvalidar']),"tipo"=>$datos['tipo']]);
             DB::commit();
-            /*?>
-            <script>alert("Usuario registrado")</script>
-            <?php*/ 
             return redirect('');
         }catch(\Exception $e){
             DB::rollBack();
