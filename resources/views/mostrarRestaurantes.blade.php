@@ -14,11 +14,13 @@
 </head>
 <body>
     <div class="fondo2">
-        <h1 class="h1headerizq"><i class="fas fa-utensils"></i> Just Eaten</h1>
+        <div class="logo">
+            <h1 class="h1headerizq"><i class="fas fa-utensils"></i> Just Eaten</h1>
+        </div>
         <h3 class="h1headerder"><i onclick='window.location="{{url("/logout")}}"' class="fas fa-sign-out-alt fa-2x"></i></h3>
     </div>
     <div class="contenido2">
-        <h1>Puedes filtrar entre todos nuestros tipos de comida!</h1>
+        <h1>¡Filtra para escoger el restaruante o el tipo de comida que estás deseando comer!</h1>
         <table class="productos">
             <tr>
                 <td class="td25">
@@ -36,10 +38,36 @@
                     </form>
                 </td>
                 <td class="td75">
-                    <div class="cartaproductos">
-                        <table class="tablaproductos" id="tablaproductos">
-                        </table>
-                    </div>
+                    @foreach($listaRestaurantes as $restaurante)
+                        <div class="cartaproductos">
+                            <table class="tablaproductos">
+                                <td class="td25">
+                                    <img style="width:200px; height:120px;" src="{{asset('storage/uploads/hamburguesas.png')}}">
+                                </td>
+                                <td class="td25">
+                                    <h2>{{$restaurante->nombre}}</h1>
+                                    <br>
+                                    <br>
+                                    <p>Precio medio: {{$restaurante->precio}} · {{$restaurante->nacionalidad}}</p>
+                                </td>
+                                @if(Session::get('tipouser') == 'admin')
+                                    <td class="td50">
+                                        <td class="td25"><button>Modificar</button></td>
+                                        <td class="td25"><button>Eliminar</button></td>
+                                    </td>
+                                @else
+                                    <td class="td50">
+                                        <td class="td50">
+                                            <form action="">
+                                                <span>Valora este restaurante! EXTRA</span>
+                                                <input type="number" name="" id="">
+                                            </form>
+                                        </td>
+                                    </td>
+                                @endif
+                            </table>
+                        </div>
+                    @endforeach
                 </td>
             </tr>
         </table>
