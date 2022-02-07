@@ -1,20 +1,91 @@
-function validar_user() {
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
-    mensaje = document.getElementById('mensaje')
+function validarLogin() {
+    let email = document.getElementById('email').value;
+    let pass = document.getElementById('password').value;
 
-    if (email == '' && password == '') {
-        mensaje.innerHTML = 'Introduce el email y la contraseña'
-        return false
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        mensaje.innerHTML = 'Introduce un email correcto'
-        return false
-    } else if (email == '') {
-        mensaje.innerHTML = 'Introduce el email'
-    } else if (password == '') {
-        mensaje.innerHTML = 'Introduce la contraseña'
-        return false
+    if (email == '' || pass == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false; 
     } else {
-        return true
+        return true;
+    }
+}
+
+function validarRegistro() {
+    let email = document.getElementById('email').value;
+    let pass = document.getElementById('password').value;
+    let passwordvalidar = document.getElementById('passwordvalidar').value;
+
+    /*Por mucho que intenten quitar la validacion, irá al srv y se validará*/
+    if (email == '' || pass == '' || passwordvalidar == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        swal.fire({
+            title: "Error",
+            text: "Introduce un email correcto",
+            icon: "error",
+        });
+        return false;
+    }else if(pass != passwordvalidar){
+        swal.fire({
+            title: "Error",
+            text: "Las contraseñas tienen que coincidir",
+            icon: "error",
+        });
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function validarCrear() {
+    let nombre = document.getElementById('nombre').value;
+    let precio = document.getElementById('precio').value;
+    let foto = document.getElementById('foto').value;
+    let nacionalidad = document.getElementById('nacionalidad').value;
+    let tipo = document.getElementById('tipo').value;
+
+    if (nombre == '' || precio == '' || foto == '' || nacionalidad == '' || tipo == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    }else {
+        return true;
+    }
+}
+
+function validarModificar() {
+    let nombre = document.getElementById('nombre').value;
+    let precio = document.getElementById('precio').value;
+    let nacionalidad = document.getElementById('nacionalidad').value;
+    let tipo = document.getElementById('tipo').value;
+    
+    if (nombre == '' || precio == '' || nacionalidad == '' || tipo == '') {
+        swal.fire({
+            title: "Error",
+            text: "Tienes que rellenar todos los datos",
+            icon: "error",
+        });
+        return false;
+    }else {
+        return true;
     }
 }

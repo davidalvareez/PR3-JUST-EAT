@@ -6,6 +6,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
+  <script src="{!! asset('js/validacion.js') !!}"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
 
 </head>
@@ -23,7 +25,7 @@
   <div class="row flex-cv">
     <div class="cuadro_login">
       <!-- formulario inicio de sesión-->
-      <form action="{{url('loginPost')}}" method="POST"  onsubmit="return validar_user();">
+      <form action="{{url('loginPost')}}" method="POST" onsubmit="return validarLogin();">
           @csrf
           {{method_field('POST')}}
           <br>
