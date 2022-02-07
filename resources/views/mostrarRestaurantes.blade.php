@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{!! asset('css/fontawesome/css/all.css') !!}">
     <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
     {{-- <script src="./script.js"></script> --}}
-    <script src="js/ajax.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Just Eaten</title>
 </head>
@@ -44,5 +43,6 @@
             </tr>
         </table>
     </div>
+    <script src="js/ajax.js"></script>
 </body>
 </html>

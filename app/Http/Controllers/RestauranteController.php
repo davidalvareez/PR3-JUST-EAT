@@ -6,6 +6,7 @@ use App\Models\Restaurante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Registro;
+use Illuminate\Support\Facades\Storage;
 
 
 class RestauranteController extends Controller
@@ -15,7 +16,7 @@ class RestauranteController extends Controller
     public function inicio(){
         return view ('inicio');
     }
-    
+
     public function mostrarRestaurante(){
         $listaRestaurantes = DB::table('tbl_restaurante')->get();
         return view('mostrarRestaurantes', compact('listaRestaurantes'));
@@ -34,7 +35,7 @@ class RestauranteController extends Controller
         ]);
         $email=$datos['email'];
         $password=md5($datos['password']);
-        
+
         $users = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->count();
         $user = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->first();
         if($users == 1){
@@ -76,7 +77,7 @@ class RestauranteController extends Controller
             DB::commit();
             /*?>
             <script>alert("Usuario registrado")</script>
-            <?php*/ 
+            <?php*/
             return redirect('');
         }catch(\Exception $e){
             DB::rollBack();
@@ -84,13 +85,15 @@ class RestauranteController extends Controller
         }
     }
 
-    public function crear()
-    {
-        return view('crearPersona');
+    public function leer(Request $request){
+        $datos=DB::select('SELECT r.*, GROUP_CONCAT(t.categoria) as categorias FROM `tbl_restaurante` r
+        LEFT JOIN `tbl_num_tipos` nt on r.id=nt.id_restaurante
+        LEFT JOIN `tbl_tipo` t on nt.id_tipo=t.id
+        GROUP BY r.id HAVING r.nombre like ?',[$request->input('filtro').'%']);
+        return response()->json($datos);
     }
 
-    /* eliminar */
-    public function eliminar($id){
+    /*public function eliminar($id){
         try {
             DB::beginTransaction();
             DB::table('tbl_restaurante')->where('id','=',$id)->delete();
@@ -100,5 +103,16 @@ class RestauranteController extends Controller
             return $e->getMessage();
         }
         return redirect('mostrarRestaurante');
+    }*/
+
+    public function eliminar($id){
+        try {
+            $dato=DB::select('select * from tbl_restaurante where id = ?',[$id]);
+            DB::delete('delete from tbl_restaurante where id = ?',[$id]);
+            /*Storage::delete('public/'.$dato[0]->foto);*/
+            return response()->json(array('resultado'=> 'OK'));
+        } catch (\Throwable $th) {
+            return response()->json(array('resultado'=> 'NOK: '.$th->getMessage()));
+        }
     }
 }
