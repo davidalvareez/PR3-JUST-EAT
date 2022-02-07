@@ -15,9 +15,16 @@ Route::post('loginPost',[RestauranteController::class, 'loginPost']);
 //ruta para el logout
 Route::get("logout",[RestauranteController::class,'logout']);
 
+//ruta para crear
+Route::get('/crear',[RestauranteController::class, 'crear']);
+Route::post('/crear',[RestauranteController::class, 'crearPost']);
+
 //ruta para el registro de usuarios
 Route::get('registro',[RestauranteController::class, 'registro']);
 Route::post('registroPost',[RestauranteController::class, 'registroPost']);
+
+//ruta para eliminar
+Route::delete('/eliminar/{id}', [RestauranteController::class, 'eliminar']);
 
 //ruta para mostrar y filtro
 Route::post('leer',[RestauranteController::class, 'leer']);

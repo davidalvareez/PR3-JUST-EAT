@@ -6,6 +6,7 @@ use App\Models\Restaurante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Registro;
+use App\Http\Requests\CrearRestaurante;
 
 
 class RestauranteController extends Controller
@@ -84,6 +85,51 @@ class RestauranteController extends Controller
         }
     }
 
+    //crear
+
+    public function crear()
+    {
+        return view('crear');
+    }
+
+    public function crearPersonaPost(CrearRestaurante  $request){
+        $datos = $request->except('_token');
+        $request->validate([
+            'nombre'=>'required|string|max:100',
+            'precio'=>'required|string|max:100',
+            'foto'=>'required|string|max:250',
+            'nacionalidad'=>'required|string|max:100'
+        ]);
+        if($request->hasFile('foto')){
+            $datos['foto'] = $request->file('foto')->store('uploads','public');
+        }else{
+            $datos['foto'] = NULL;
+        }
+        return $datos;
+        try{
+            DB::beginTransaction();
+            DB::table('tbl_restaurante')->insertGetId(["foto"=>$datos['foto'],"nombre"=>$datos['nombre'],"precio"=>$datos['precio'],"nacionalidad"=>$datos['nacionalidad']]);
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollBack();
+            return $e->getMessage();
+        }
+    }
+
+    //eliminar
+
+    public function eliminar($id){
+        try {
+            DB::beginTransaction();
+            DB::table('tbl_restaurante')->where('id','=',$id)->delete();
+            DB::commit();
+        }catch(\Exception $e) {
+            DB::rollback();
+            return $e->getMessage();
+        }
+        return redirect('mostrarRestaurantes');
+    }
+
     //Zona filtro
 
     public function leer(Request $request){
@@ -94,3 +140,5 @@ class RestauranteController extends Controller
         return response()->json($datos);
     }
 }
+
+
