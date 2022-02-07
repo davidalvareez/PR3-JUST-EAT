@@ -44,14 +44,20 @@
                                 <td class="td25">
                                     <img style="width:200px; height:120px;" src="{{asset('storage/uploads/hamburguesas.png')}}">
                                 </td>
-                                <td class="td25">
-                                    <h2>{{$restaurante->nombre}}</h1>
-                                    <br>
-                                    <br>
-                                    <p>Precio medio: {{$restaurante->precio}} · {{$restaurante->nacionalidad}}</p>
+                                <td class="td50">
+                                    @if(is_null($restaurante->tipo2))
+                                        <h3>{{$restaurante->nombre}} ({{$restaurante->precio}})</h3>
+                                        <br>
+                                        <p>{{$restaurante->nacionalidad}} · {{$restaurante->tipo}} </p>
+                                    @else
+                                        <h3>{{$restaurante->nombre}} ({{$restaurante->precio}})</h3>
+                                        <br>
+                                        <p>{{$restaurante->nacionalidad}} · {{$restaurante->tipo}} · {{$restaurante->tipo2}}</p>
+                                        <p></p>
+                                    @endif
                                 </td>
                                 @if(Session::get('tipouser') == 'admin')
-                                    <td class="td50">
+                                    <td class="td25">
                                         <td class="td25"><button>Modificar</button></td>
                                         <td class="td25"><button>Eliminar</button></td>
                                     </td>
