@@ -19,7 +19,7 @@
         <h3 class="h1headerder"><i onclick='window.location="{{url("/logout")}}"' class="fas fa-sign-out-alt fa-2x"></i></h3>
     </div>
     <div class="contenido2">
-        <h1>¡Filtra para escoger el restaruante o el tipo de comida que estás deseando comer!</h1>
+        <h1>¡Filtra para escoger el restaurante o el tipo de comida que estás deseando comer!</h1>
         <table class="productos">
             <form action="{{url('crear')}}" method="GET">
                 <button class= "" type="submit" name="Crear" value="Crear">Crear</button>
@@ -44,7 +44,7 @@
                         <div class="cartaproductos">
                             <table class="tablaproductos">
                                 <td class="td25">
-                                    <img style="width:200px; height:120px;" src="{{asset('storage/uploads/hamburguesas.png')}}">
+                                    <img class="imgrestaurante" src="{{asset('storage/uploads/hamburguesas.png')}}">
                                 </td>
                                 <td class="td50">
                                     @if(is_null($restaurante->tipo2))

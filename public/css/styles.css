@@ -144,3 +144,9 @@
 .tablaproductos{
     width: 100%;
 }
+.imgrestaurante{
+    border-radius: 10px;
+    width:200px; 
+    height:120px;
+    margin-top: 0.1rem;
+}
