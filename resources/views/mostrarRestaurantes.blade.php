@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{!! asset('css/fontawesome/css/all.css') !!}">
     <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
     {{-- <script src="./script.js"></script> --}}
-    <script src="js/ajax.js"></script>
     <meta name="csrf-token" id="token" content="{{ csrf_token() }}">
     <title>Just Eaten</title>
 </head>
@@ -22,6 +21,9 @@
     <div class="contenido2">
         <h1>¡Filtra para escoger el restaruante o el tipo de comida que estás deseando comer!</h1>
         <table class="productos">
+            <form action="{{url('crear')}}" method="GET">
+                <button class= "" type="submit" name="Crear" value="Crear">Crear</button>
+            </form>
             <tr>
                 <td class="td25">
                     <form action="">
@@ -57,9 +59,16 @@
                                     @endif
                                 </td>
                                 @if(Session::get('tipouser') == 'admin')
-                                    <td class="td25">
-                                        <td class="td25"><button>Modificar</button></td>
-                                        <td class="td25"><button>Eliminar</button></td>
+                                    <td class="td50">
+                                        <td class="td25"><form action="{{url('modificar/'.$restaurante->id)}}" method="GET">
+                                            <button class= "" type="submit" name="Modificar" value="Modificar">Modificar</button>
+                                        </form></td>
+                                        <td class="td25"><form action="{{url('eliminar/'.$restaurante->id)}}" method="POST">
+                                            @csrf
+                                            {{method_field('DELETE')}}
+                    
+                                            <button class= "" type="submit" name="Eliminar" value="Eliminar">Eliminar</button>
+                                        </form></td>
                                     </td>
                                 @else
                                     <td class="td50">
@@ -78,5 +87,6 @@
             </tr>
         </table>
     </div>
+    <script src="js/ajax.js"></script>
 </body>
 </html>

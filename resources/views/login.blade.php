@@ -23,7 +23,6 @@
   </div>
   @endif
   <div class="row flex-cv">
-    <div class=alert id='mensaje'>
     <div class="cuadro_login">
       <!-- formulario inicio de sesión-->
       <form action="{{url('loginPost')}}" method="POST" onsubmit="return validarLogin();">
@@ -35,14 +34,14 @@
           <div class="form-group">
             <p>Email:</p>
             <div>
-              <input class="inputlogin" id="email" type="text" name="email" placeholder="Introduce tu email" value="{{old('email')}}">
+              <input type="email" id="email" type="email" name="email" placeholder="Introduce tu email" value="{{old('email')}}">
             </div>
           </div>
           <br>
           <div class="form-group">
             <p>Contraseña:</p>
             <div>
-              <input class="inputlogin" id="password" type="password" name="password" placeholder="Introduce la contraseña">
+              <input type="password" id="password" name="password" placeholder="Introduce la contraseña">
             </div>
           </div>
           <br><br>
@@ -55,6 +54,5 @@
       </form>
     </div>
   </div>
-  <script type="text/javascript" src="../../js/validacion.js"></script>
 </body>
 </html>

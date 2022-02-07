@@ -6,6 +6,8 @@ use App\Models\Restaurante;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\Registro;
+use App\Http\Requests\CrearRestaurante;
+use Illuminate\Support\Facades\Storage;
 
 
 class RestauranteController extends Controller
@@ -55,8 +57,8 @@ class RestauranteController extends Controller
         $request->session()->flush();
         return redirect('/');
     }
+    
     /*REGISTRO*/
-
     public function registro()
     {
         return view('registro');
@@ -82,6 +84,88 @@ class RestauranteController extends Controller
         }
     }
 
+    //crear
+    public function crear()
+    {
+        return view('crear');
+    }
+
+    public function crearPost(CrearRestaurante  $request){
+        $datos = $request->except('_token');
+        $request->validate([
+            'nombre'=>'required|string|max:100',
+            'precio'=>'required|string|max:100',
+            'foto'=>'required|mimes:jpg,png,webp,svg',
+            'nacionalidad'=>'required|string|max:100',
+            'tipo'=>'required|string|max:100'
+        ]);
+        if($request->hasFile('foto')){
+            $datos['foto'] = $request->file('foto')->store('uploads','public');
+        }else{
+            $datos['foto'] = NULL;
+        }
+        return $datos;
+        try{
+            DB::beginTransaction();
+            DB::table('tbl_restaurante')->insertGetId(["foto"=>$datos['foto'],"nombre"=>$datos['nombre'],"precio"=>$datos['precio'],"nacionalidad"=>$datos['nacionalidad'],"tipo"=>$datos['tipo'],"tipo2"=>$datos['tipo2']]);
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollBack();
+            return $e->getMessage();
+        }
+        return redirect('');
+    }
+
+    //eliminar
+    public function eliminar($id){
+        try {
+            DB::beginTransaction();
+            DB::table('tbl_restaurante')->where('id','=',$id)->delete();
+            DB::commit();
+        }catch(\Exception $e) {
+            DB::rollback();
+            return $e->getMessage();
+        }
+        return redirect('mostrarRestaurantes');
+    }
+
+    //modificar
+public function modificar($id){
+    $restaurante=DB::table('tbl_restaurante')->select()->where('id','=',$id)->first();
+    return view('modificar', compact('restaurante'));
+}
+
+public function modificarPut(Request $request){
+    $datos=$request->except('_token','_method','enviar');
+    $request->validate([
+        'nombre'=>'required|string|max:100',
+        'precio'=>'required|string|max:100',
+        'nacionalidad'=>'required|string|max:100',
+        'tipo'=>'required|string|max:100'
+    ]);
+    if ($request->hasFile('foto')) {
+        $foto = DB::table('tbl_restaurante')->select('foto')->where('id','=',$request['id'])->first();
+        if ($foto->foto != null) {
+            Storage::delete('public/'.$foto->foto);
+        }
+        $datos['foto'] = $request->file('foto')->store('uploads','public');
+    }else{
+        $foto = DB::table('tbl_restaurante')->select('foto')->where('id','=',$request['id'])->first();
+        $datos['foto'] = $foto->foto;
+    }
+    //$datos=$request->except('_token','_method','nombre','precio','nacionalidad','tipo','tipo2','foto','id');
+    try {
+        DB::beginTransaction();
+        DB::table('tbl_restaurante')->where('id','=',$request['id'])->update($datos);
+        DB::commit();
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return $e->getMessage();
+    }
+    return redirect('mostrarRestaurantes');
+}
+
+
     //Zona filtro
 
     public function leer(Request $request){
@@ -92,3 +176,5 @@ class RestauranteController extends Controller
         return response()->json($datos);
     }
 }
+
+
