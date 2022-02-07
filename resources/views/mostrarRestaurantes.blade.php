@@ -44,7 +44,7 @@
                         <div class="cartaproductos">
                             <table class="tablaproductos">
                                 <td class="td25">
-                                    <img class="imgrestaurante" src="{{asset('storage/uploads/hamburguesas.png')}}">
+                                    <img class="imgrestaurante" src="{{asset('storage').'/'.$restaurante->foto}}">
                                 </td>
                                 <td class="td50">
                                     @if(is_null($restaurante->tipo2))
