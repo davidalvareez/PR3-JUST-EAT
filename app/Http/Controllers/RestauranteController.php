@@ -87,15 +87,8 @@ class RestauranteController extends Controller
     //Zona filtro
 
     public function leer(Request $request){
-        $datos=DB::select('SELECT r.*, GROUP_CONCAT(t.categoria) as categorias FROM `tbl_restaurante` r
-        LEFT JOIN `tbl_num_tipos` nt on r.id=nt.id_restaurante
-        LEFT JOIN `tbl_tipo` t on nt.id_tipo=t.id
-        GROUP BY r.id HAVING r.nombre like ?',[$request->input('filtro').'%']);
-        $cocinas=DB::select('SELECT categoria FROM `tbl_tipo`');
-        return response()->json(array(
-            'datos' => $datos,
-            'cocinas' => $cocinas,
-
-        ));
+        $datos=DB::select('SELECT * FROM `tbl_restaurante`
+        WHERE nombre like ?',[$request->input('filtro').'%']);
+        return response()->json($datos);
     }
 }

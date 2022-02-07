@@ -25,38 +25,32 @@
             <tr>
                 <td class="td25">
                     <span class="">NombreFiltro</span>
-                    <input class="" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
+                    <input class="" type="text" onkeyup="leerDiegoJS()" name="" id="filtro"><br>
                     <span class="">Todas las cocinas A-Z</span>
                     <ul id="lateral">
                     </ul>
                 </td>
-                <td class="td75" id="tablaproductos">
-                    @foreach($listaRestaurantes as $restaurante)
-                        <div class="cartaproductos">
-                            <table class="tablaproductos">
-                                <td class="td25 image">
-                                </td>
-                                <td class="td25 campos">
-                                </td>
-                                @if(Session::get('tipouser') == 'admin')
+                @if(Session::get('tipouser') == 'admin')
+                    <td class="td75" id="tablaproductos">
+                        @foreach($listaRestaurantes as $restaurante)
+                            <div class="cartaproductos">
+                                <table class="tablaproductos">
+                                    <td class="td25 image">
+                                    </td>
+                                    <td class="td25 campos">
+                                    </td>
                                     <td class="td50">
                                         <td class="td25"><button>Modificar</button></td>
                                         <td class="td25"><button>Eliminar</button></td>
                                     </td>
-                                @else
-                                    <td class="td50">
-                                        <td class="td50">
-                                            <form action="">
-                                                <span>Valora este restaurante! EXTRA</span>
-                                                <input type="number" name="" id="">
-                                            </form>
-                                        </td>
-                                    </td>
-                                @endif
-                            </table>
-                        </div>
-                    @endforeach
-                </td>
+                                </table>
+                            </div>
+                        @endforeach
+                    </td>
+                @else
+                    <td class="td75" id="cuadro">
+                    </td>
+                @endif
             </tr>
         </table>
     </div>
