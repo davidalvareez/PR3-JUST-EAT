@@ -21,8 +21,7 @@ class RestauranteController extends Controller
         //if para que si no iniciamos sesión no podamos acceder a mostrarRestaurantes
         if ($request->session()->exists('email')) {
         //si se ha iniciado sesion mostrará todos los restaurantes
-        $listaRestaurantes = DB::table('tbl_restaurante')->get();
-        return view('mostrarRestaurantes', compact('listaRestaurantes'));
+        return view('mostrarRestaurantes');
         } else {
             return redirect('../public');
         }
@@ -186,11 +185,22 @@ class RestauranteController extends Controller
     //Zona filtro
 
     public function leer(Request $request){
-        $datos=DB::select('SELECT r.*, GROUP_CONCAT(t.categoria) as categorias FROM `tbl_restaurante` r
-        LEFT JOIN `tbl_num_tipos` nt on r.id=nt.id_restaurante
-        LEFT JOIN `tbl_tipo` t on nt.id_tipo=t.id
-        GROUP BY r.id HAVING r.nombre like ?',[$request->input('filtro').'%']);
-        return response()->json($datos);
+        if ($request->has('nacionalidad','filtro')) {
+            $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
+            $datos = DB::table('tbl_restaurante')->select('*')->where('nacionalidad','=',$request['nacionalidad'])->where('nombre','like',$request['filtro'].'%')->get();
+            return response()->json([
+                'datos' => $datos,
+                'nacionalidades' => $nacionalidades,
+                /* 'nacion' => $request['nacionalidad'], */
+            ]);
+        }else{
+            $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
+            $datos = DB::table('tbl_restaurante')->select('*')->where('nombre','like',$request['filtro'].'%')->get();
+            return response()->json([
+                'datos' => $datos,
+                'nacionalidades' => $nacionalidades,
+            ]);
+        }
     }
 }
 

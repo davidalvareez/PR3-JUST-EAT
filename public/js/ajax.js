@@ -1,5 +1,18 @@
 window.onload = function() {
     leerJS();
+    var modal = document.getElementById("myModal");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
 
 function objetoAjax() {
@@ -20,7 +33,9 @@ function objetoAjax() {
 }
 
 function leerJS() {
-    var tabla = document.getElementById("tablaproductos");
+    var cuadro = document.getElementById("cuadro");
+    var tipo = document.getElementById("tipo").textContent;
+    var lateral = document.getElementById("lateral");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
@@ -32,53 +47,104 @@ function leerJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            var datos = respuesta.datos;
+            var nacionalidades = respuesta.nacionalidades;
             var recarga = '';
-            recarga += '<tr><th>Nombre</th><th>Precio</th><th>Nacionalidad</th><th>Categorias</th></tr>';
+            var ul = '';
             /* Leerá la respuesta que es devuelta por el controlador: */
-            for (let i = 0; i < respuesta.length; i++) {
-                recarga += '<tr>';
-                recarga += '<td>' + respuesta[i].nombre + '</td>';
-                recarga += '<td>' + respuesta[i].precio + '</td>';
-                recarga += '<td>' + respuesta[i].nacionalidad + '</td>';
-                recarga += '<td>' + respuesta[i].caegorias + '</td>';
-                /*if (respuesta[i].foto != NULL) {
-                    recarga += '<td><img src="storage/' + respuesta[i].foto + '"></td>';
+            for (let i = 0; i < datos.length; i++) {
+                recarga += '<div class="cartaproductos">';
+                recarga += '<table class="tablaproductos">';
+                recarga += '<td class="td25"><img style="width:200px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
+                recarga += '<td class="td25"><h2>' + datos[i].nombre + '</h2><br><br><p>Precio medio: ' + datos[i].precio + ' · ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + '</p></td>';
+                if (tipo == 'admin') {
+                    recarga += '<td class="td25"><form action="./modificar/' + datos[i].id + '" method="GET"><button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
-                    recarga += '<td>No hay foto</td>';
-                }*/
-                recarga += '<td><button onclick="eliminarJS(' + respuesta[i].id + ');">Eliminar</button>' +
-                    '<input type="hidden" name="_method" value="eliminar" id="eliminar' + respuesta[i].id + '">' +
-                    '</td>';
-                recarga += '</tr>';
+                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + '); return false;">Ver mas información</button></td>';
+                }
+                recarga += '</table>';
+                recarga += '</div>';
             }
-            tabla.innerHTML = recarga;
+            cuadro.innerHTML = recarga;
+            for (let j = 0; j < nacionalidades.length; j++) {
+                ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
+            }
+            lateral.innerHTML = ul;
         }
     }
     ajax.send(formData);
 }
-/* else if (this.readyState != 4 || this.status != 200) {
-           alert(this.responseText);
-       } */
 
-function eliminarJS(id) {
+function cocinaJS(numero) {
+    var cuadro = document.getElementById("cuadro");
+    var tipo = document.getElementById("tipo").textContent;
+    var lateral = document.getElementById("lateral");
+    var nacionalidad = document.getElementsByClassName('nacionalidad')[numero].value;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
-    formData.append('_method', getElementById('eliminar' + id).value);
+    formData.append('filtro', document.getElementById('filtro').value);
+    formData.append('nacionalidad', nacionalidad);
 
+    /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
 
-    ajax.open("POST", "eliminar/" + id, true);
+    ajax.open("POST", "leer", true);
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
-            if (respuesta.resultado == "OK") {
-                document.getElementById('mensaje').innerHTML = 'Registro eliminado correctamente';
-                ç
-            } else {
-                docuemnt.getElementById('mensaje').innerHTML = 'Error';
+            var datos = respuesta.datos;
+            var nacionalidades = respuesta.nacionalidades;
+            var recarga = '';
+            var ul = '';
+            /* Leerá la respuesta que es devuelta por el controlador: */
+            for (let i = 0; i < datos.length; i++) {
+                recarga += '<div class="cartaproductos">';
+                recarga += '<table class="tablaproductos">';
+                recarga += '<td class="td25"><img style="width:200px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
+                recarga += '<td class="td25"><h2>' + datos[i].nombre + '</h2><br><br><p>Precio medio: ' + datos[i].precio + ' · ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + '</p></td>';
+                if (tipo == 'admin') {
+                    recarga += '<td class="td25"><form method="GET"><button class= "boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
+                } else {
+                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" id="myBtn">Ver mas información</button></td>';
+                }
+                recarga += '</table>';
+                recarga += '</div>';
             }
-            leerJS();
+            cuadro.innerHTML = recarga;
+            for (let j = 0; j < nacionalidades.length; j++) {
+                ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
+            }
+            lateral.innerHTML = ul;
         }
     }
     ajax.send(formData);
 }
+
+function eliminarJS(id) {
+    var token = document.getElementById('token').getAttribute("content");
+    var method = document.getElementById('postDelete').value;
+    var formData = new FormData();
+    formData.append('_token', token);
+    formData.append('_method', method);
+
+    /* Inicializar un objeto AJAX */
+    var ajax = objetoAjax();
+    ajax.open("POST", "eliminar/" + id, true);
+    ajax.onreadystatechange = function() {
+        if (ajax.readyState == 4 && ajax.status == 200) {
+            leerJS();
+        }
+    }
+    ajax.send(formData)
+}
+
+function openmodal(id) {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+    var mheader = document.getElementById("mheader");
+    var mbody = document.getElementById("mbody");
+    mheader.innerHTML = "<h1>Nota #" + id + "</h1>";
+}
+/* al usar ajax lo que estan dentro del los div mheader y mbody se sobreescribe por el contenido de ajax, todo */
