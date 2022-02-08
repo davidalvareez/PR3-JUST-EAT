@@ -30,27 +30,8 @@
                     <ul id="lateral">
                     </ul>
                 </td>
-                @if(Session::get('tipouser') == 'admin')
-                    <td class="td75" id="cuadro">
-                        <td class="td25"><form action="" method="GET">
-                            <button class= "" type="submit" name="Modificar" value="Modificar">Modificar</button>
-                        </form></td>
-                        <td class="td25"><form action="" method="POST">
-                            <button class= "" type="submit" name="Eliminar" value="Eliminar">Eliminar</button>
-                        </form></td>
-                    </td>
-                @else
-                    <td class="td75" id="cuadro">
-                        <td class="td50">
-                            <td class="td50">
-                                <form action="">
-                                    <span>Valora este restaurante! EXTRA</span>
-                                    <input type="number" name="" id="">
-                                </form>
-                            </td>
-                        </td>
-                    </td>
-                @endif
+                <td class="td75" id="cuadro">
+                </td>
             </tr>
         </table>
     </div>

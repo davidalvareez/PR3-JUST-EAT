@@ -44,6 +44,14 @@ function leerJS() {
                 recarga += '<table class="tablaproductos">';
                 recarga += '<td class="td25"><img style="width:200px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
                 recarga += '<td class="td25"><h2>' + datos[i].nombre + '</h2><br><br><p>Precio medio: ' + datos[i].precio + ' · ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + '</p></td>';
+                if (tipo == 'admin') {
+                    recarga += '<td class="td75" id="cuadro"><td class="td25"><form method="GET">';
+                    recarga += '<button class= "" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    recarga += '<td class="td25"><form action="" method="POST"><button class= "" type="submit" name="Eliminar" value="Eliminar">Eliminar</button></form></td></td>';
+                } else {
+                    recarga += '<td class="td75" id="cuadro"><td class="td50"><td class="td50"><form>';
+                    recarga += '<span>Valora este restaurante! EXTRA</span><input type="number" name="" id=""></form></td></td></td>';
+                }
                 recarga += '</table>';
                 recarga += '</div>';
             }
