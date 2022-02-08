@@ -22,8 +22,7 @@ class RestauranteController extends Controller
         //if para que si no iniciamos sesión no podamos acceder a mostrarRestaurantes
         if ($request->session()->exists('email')) {
         //si se ha iniciado sesion mostrará todos los restaurantes
-        $listaRestaurantes = DB::table('tbl_restaurante')->get();
-        return view('mostrarRestaurantes', compact('listaRestaurantes'));
+        return view('mostrarRestaurantes');
         } else {
             return redirect('../public');
         }
