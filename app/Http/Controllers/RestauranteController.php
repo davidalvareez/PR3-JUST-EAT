@@ -18,8 +18,15 @@ class RestauranteController extends Controller
         return view ('inicio');
     }
     
-    public function mostrarRestaurante(){
-        return view('mostrarRestaurantes');
+    public function mostrarRestaurante(Request $request){
+        //if para que si no iniciamos sesión no podamos acceder a mostrarRestaurantes
+        if ($request->session()->exists('email')) {
+        //si se ha iniciado sesion mostrará todos los restaurantes
+        $listaRestaurantes = DB::table('tbl_restaurante')->get();
+        return view('mostrarRestaurantes', compact('listaRestaurantes'));
+        } else {
+            return redirect('../public');
+        }
     }
 
     public function login(){
@@ -33,11 +40,13 @@ class RestauranteController extends Controller
             'email'=>'required',
             'password'=>'required'
         ]);
+        try {
         $email=$datos['email'];
         $password=md5($datos['password']);
-        
+        DB::beginTransaction();
         $users = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->count();
         $user = DB::table("tbl_usuario")->where('email','=',$email)->where('password','=',$password)->first();
+        DB::commit();
         if($users == 1){
             //Establecer la sesion
             $request->session()->put('email',$request->email);
@@ -47,6 +56,10 @@ class RestauranteController extends Controller
             //Redirigir al login
             return redirect('/login');
         }
+            }catch(\Exception $e){
+            DB::rollBack();
+            return $e->getMessage();
+            }
     }
 
     public function logout(Request $request){
@@ -76,7 +89,7 @@ class RestauranteController extends Controller
             /*insertar datos en la base de datos*/
             DB::table('tbl_usuario')->insert(["email"=>$datos['email'],"password"=>md5($datos['password']),"passwordvalidar"=>md5($datos['passwordvalidar']),"tipo"=>$datos['tipo']]);
             DB::commit();
-            return redirect('');
+            return redirect('login');
         }catch(\Exception $e){
             DB::rollBack();
             return $e->getMessage();
@@ -95,6 +108,7 @@ class RestauranteController extends Controller
             'nombre'=>'required|string|max:100',
             'precio'=>'required|string|max:100',
             'foto'=>'required|mimes:jpg,png,webp,svg',
+            'descripcion'=>'required|string|max:400',
             'nacionalidad'=>'required|string|max:100',
             'tipo'=>'required|string|max:100'
         ]);
@@ -103,16 +117,15 @@ class RestauranteController extends Controller
         }else{
             $datos['foto'] = NULL;
         }
-        return $datos;
         try{
             DB::beginTransaction();
-            DB::table('tbl_restaurante')->insertGetId(["foto"=>$datos['foto'],"nombre"=>$datos['nombre'],"precio"=>$datos['precio'],"nacionalidad"=>$datos['nacionalidad'],"tipo"=>$datos['tipo'],"tipo2"=>$datos['tipo2']]);
+            DB::table('tbl_restaurante')->insert(["foto"=>$datos['foto'],"nombre"=>$datos['nombre'],"precio"=>$datos['precio'],"nacionalidad"=>$datos['nacionalidad'],"tipo"=>$datos['tipo'],"tipo2"=>$datos['tipo2']]);
             DB::commit();
+            return redirect('mostrarRestaurantes');
         }catch(\Exception $e){
             DB::rollBack();
             return $e->getMessage();
         }
-        return redirect('');
     }
 
     //eliminar
@@ -139,6 +152,7 @@ public function modificarPut(Request $request){
     $request->validate([
         'nombre'=>'required|string|max:100',
         'precio'=>'required|string|max:100',
+        'descripcion'=>'required|string|max:400',
         'nacionalidad'=>'required|string|max:100',
         'tipo'=>'required|string|max:100'
     ]);

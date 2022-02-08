@@ -12,7 +12,7 @@
 .h1headerder{
     float: right;
     margin-right:4.2rem;
-    margin-top:-1.5rem;
+    margin-top:-2.5rem;
     color:black;
 }
 .logo{
@@ -144,3 +144,264 @@
 .tablaproductos{
     width: 100%;
 }
+.imgrestaurante{
+    border-radius: 10px;
+    width:140px; 
+    height:120px;
+    margin-top: 0.1rem;
+    margin-left: 0.5rem;
+}
+/*login*/
+.login {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-image: url("../../../PR3-JUST-EAT/storage/app/public/uploads/fondo.jpg");
+    background-size: cover;
+}
+
+.cuadro_login {
+    height: 30rem;
+    width: 30rem;
+    margin-top: 6rem;
+    background: white;
+    border: 5px solid orangered;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+
+
+.h1_login {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 35px;
+}
+
+.input_login {
+    width: 250px;
+    height: 45px;
+    margin-bottom: 1rem;
+    font-size: 15px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    outline: none;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#row-backcolor {
+    background-color: #ffcb85;
+}
+
+.flex-cv {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+}
+
+.botonlogin {
+    width: 250px;
+    height: 45px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.botonlogin:hover {
+    background: orangered;
+    color: #fff !important;
+}
+
+.botonregistro {
+    width: 250px;
+    height: 45px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.botonregistro:hover {
+    background: red;
+    color: #fff !important;
+}
+
+.inputregistro {
+    width: 250px;
+    height: 45px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.inputregistro:hover {
+    background: orangered;
+    color: #fff !important;
+}
+.h1_login {
+    padding-top: 60px;
+    padding-bottom: 20px;
+    font-size: 35px;
+}
+.h1_register {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    font-size: 35px;
+}
+.msgregistrarse{
+    padding-top:2rem;
+}
+.boton_modificar_restaurante {
+    width: 250px;
+    height: 45px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.boton_modificar_restaurante:hover {
+    background: cadetblue;
+    color: #fff !important;
+}
+
+.boton_eliminar_restaurante {
+    width: 250px;
+    height: 45px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.boton_eliminar_restaurante:hover {
+    background: red;
+    color: #fff !important;
+}
+.boton_crear_restaurante {
+    width: 250px;
+    height: 45px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+
+.boton_crear_restaurante:hover {
+    background: orangered;
+    color: #fff !important;
+}
+.cuadro_crear_restaurante {
+    height: 35rem;
+    width: 30rem;
+    margin-top: 3rem;
+    background: white;
+    border: 5px solid orangered;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+.input_crear_restaurante{
+    width: 250px;
+    height: 45px;
+    margin-bottom: 1rem;
+    font-size: 15px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    outline: none;
+}
+.h1_crear_restaurante{
+    padding-top: 17px;
+    padding-bottom: 20px;
+    font-size: 35px;
+}
+
+/*modal*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .h1_modal{
+      text-align: center;
+  }
