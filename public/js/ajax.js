@@ -1,7 +1,6 @@
 window.onload = function() {
     leerJS();
     isOn = false;
-    /* var nacionalidad = []; */
 }
 
 function objetoAjax() {
@@ -65,7 +64,6 @@ var nacionalidad = [];
 
 function botonesJS(numero) {
     var nacion = document.getElementsByClassName('nacionalidad')[numero];
-    console.log(nacion);
     if (!isOn) {
         isOn = true;
         nacionalidad.push(nacion.value);
@@ -75,15 +73,13 @@ function botonesJS(numero) {
         nacionalidad.pop();
         console.log(nacionalidad);
     }
+    cocinaJS();
 }
 
 function cocinaJS() {
     var cuadro = document.getElementById("cuadro");
     /* var tipo = document.getElementById("tipo"); */
     var lateral = document.getElementById("lateral");
-    var nacionalidad = '';
-    nacionalidad += document.getElementById('nacionalidad').value;
-    console.log(nacionalidad);
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
@@ -98,8 +94,7 @@ function cocinaJS() {
             var respuesta = JSON.parse(this.responseText);
             var datos = respuesta.datos;
             var nacionalidades = respuesta.nacionalidades;
-            console.log(respuesta.resultado);
-            console.log(respuesta.nacion);
+            /* console.log(respuesta.nacion); */
             var recarga = '';
             var ul = '';
             /* Leerá la respuesta que es devuelta por el controlador: */
