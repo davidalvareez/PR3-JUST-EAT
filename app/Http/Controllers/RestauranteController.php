@@ -19,8 +19,7 @@ class RestauranteController extends Controller
     }
     
     public function mostrarRestaurante(){
-        $listaRestaurantes = DB::table('tbl_restaurante')->get();
-        return view('mostrarRestaurantes', compact('listaRestaurantes'));
+        return view('mostrarRestaurantes');
     }
 
     public function login(){
@@ -169,9 +168,37 @@ public function modificarPut(Request $request){
     //Zona filtro
 
     public function leer(Request $request){
-        $datos=DB::select('SELECT * FROM `tbl_restaurante`
-        WHERE nombre like ?',[$request->input('filtro').'%']);
-        return response()->json($datos);
+        if ($request->has('nacionalidad','filtro')) {
+            $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
+            $datos = DB::table('tbl_restaurante')->select('*')->where('nacionalidad','=',$request['nacionalidad'])->where('nombre','like',$request['filtro'].'%')->get();
+            /* $datos=DB::select('SELECT * FROM `tbl_restaurante`
+            WHERE nacionalidad = ?',[$request->input('nacionalidad')]); */
+            return response()->json([
+                'datos' => $datos,
+                'nacionalidades' => $nacionalidades,
+                'resultado' => 'primero',
+                'nacion' => $request['nacionalidad'],
+            ]);
+        }elseif ($request->has('nacionalidad')) {
+            $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
+            $datos = DB::table('tbl_restaurante')->select('*')->where('nacionalidad','=',$request['nacionalidad'])->get();
+            /* $datos=DB::select('SELECT * FROM `tbl_restaurante`
+            WHERE nacionalidad = ?',[$request->input('nacionalidad')]); */
+            return response()->json([
+                'datos' => $datos,
+                'nacionalidades' => $nacionalidades,
+                'resultado' => 'segundo',
+            ]);
+        }else{
+            $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
+            $datos = DB::table('tbl_restaurante')->select('*')->where('nombre','like',$request['filtro'].'%')->get();
+            /* $datos=DB::select('SELECT * FROM `tbl_restaurante`
+            WHERE nombre like ?',[$request->input('filtro').'%']); */
+            return response()->json([
+                'datos' => $datos,
+                'nacionalidades' => $nacionalidades,
+            ]);
+        }
     }
 }
 
