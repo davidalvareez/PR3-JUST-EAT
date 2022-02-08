@@ -40,7 +40,7 @@ function leerJS() {
                 recarga += '<td>' + respuesta[i].nombre + '</td>';
                 recarga += '<td>' + respuesta[i].precio + '</td>';
                 recarga += '<td>' + respuesta[i].nacionalidad + '</td>';
-                recarga += '<td>' + respuesta[i].categorias + '</td>';
+                recarga += '<td>' + respuesta[i].caegorias + '</td>';
                 /*if (respuesta[i].foto != NULL) {
                     recarga += '<td><img src="storage/' + respuesta[i].foto + '"></td>';
                 } else {
