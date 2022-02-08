@@ -21,11 +21,16 @@
             <input class="input_login" type="password" id="password" name="password" placeholder="Introduce la contraseña...">
             <input class="input_login" type="password" id="passwordvalidar" name="passwordvalidar" placeholder="Vuelve a introducir la contraseña...">
             <div>
-                @if($errors->any())
-                    @foreach($errors->all() as $error)
-                        <input type="hidden" id="error" name="tipo" value="error">
-                    @endforeach
-                @endif
+                @error('email')
+                    <input type="hidden" id="error" name="tipo" value="errormio">
+                    <script>
+                        window.onload = function(){
+                            validarCorreo();
+                        }
+                    </script>
+
+                @enderror
+                <input type="hidden" id="error" name="tipo" value="noerror">
                 <input type="hidden" name="tipo" value="estandar">
                 <input class="inputregistro" type="submit" value="Registrarme">
             </div>
