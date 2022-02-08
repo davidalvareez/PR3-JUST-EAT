@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Storage;
 class RestauranteController extends Controller
 {
     /*LOGIN*/
-
     public function inicio(){
         return view ('inicio');
     }
@@ -84,7 +83,7 @@ class RestauranteController extends Controller
         }
     }
 
-    //crear
+    //CREAR
     public function crear()
     {
         return view('crear');
@@ -93,12 +92,15 @@ class RestauranteController extends Controller
     public function crearPost(CrearRestaurante  $request){
         $datos = $request->except('_token');
         $request->validate([
+            //validacion de crear
             'nombre'=>'required|string|max:100',
             'precio'=>'required|string|max:100',
             'foto'=>'required|mimes:jpg,png,webp,svg',
             'nacionalidad'=>'required|string|max:100',
             'tipo'=>'required|string|max:100'
         ]);
+
+        //añadir foto
         if($request->hasFile('foto')){
             $datos['foto'] = $request->file('foto')->store('uploads','public');
         }else{
@@ -116,7 +118,7 @@ class RestauranteController extends Controller
         return redirect('');
     }
 
-    //eliminar
+    //ELIMINAR
     public function eliminar($id){
         try {
             DB::beginTransaction();
@@ -129,20 +131,22 @@ class RestauranteController extends Controller
         return redirect('mostrarRestaurantes');
     }
 
-    //modificar
-public function modificar($id){
-    $restaurante=DB::table('tbl_restaurante')->select()->where('id','=',$id)->first();
-    return view('modificar', compact('restaurante'));
-}
+    //MODIFICAR
+    public function modificar($id){
+        $restaurante=DB::table('tbl_restaurante')->select()->where('id','=',$id)->first();
+        return view('modificar', compact('restaurante'));
+    }
 
-public function modificarPut(Request $request){
-    $datos=$request->except('_token','_method','enviar');
-    $request->validate([
-        'nombre'=>'required|string|max:100',
-        'precio'=>'required|string|max:100',
-        'nacionalidad'=>'required|string|max:100',
-        'tipo'=>'required|string|max:100'
-    ]);
+    public function modificarPut(Request $request){
+        $datos=$request->except('_token','_method','enviar');
+        $request->validate([
+            'nombre'=>'required|string|max:100',
+            'precio'=>'required|string|max:100',
+            'nacionalidad'=>'required|string|max:100',
+            'tipo'=>'required|string|max:100'
+        ]);
+        
+    /*MODIFICAR FOTO*/
     if ($request->hasFile('foto')) {
         $foto = DB::table('tbl_restaurante')->select('foto')->where('id','=',$request['id'])->first();
         if ($foto->foto != null) {
