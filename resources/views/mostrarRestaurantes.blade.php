@@ -20,10 +20,12 @@
     </div>
     <div class="contenido2">
         <h1>¡Filtra para escoger el restaurante o el tipo de comida que estás deseando comer!</h1>
-        <table class="productos">
+        @if(Session::get('tipouser') == 'admin')
             <form action="{{url('crear')}}" method="GET">
-                <button class= "" type="submit" name="Crear" value="Crear">Crear</button>
+                <button class="boton_crear_restaurante" type="submit" name="Crear" value="Crear">Crear nuevo restaurante</button>
             </form>
+        @endif
+        <table class="productos">
             <tr>
                 <td class="td25">
                     <form action="">
@@ -44,7 +46,7 @@
                         <div class="cartaproductos">
                             <table class="tablaproductos">
                                 <td class="td25">
-                                    <img class="imgrestaurante" src="{{asset('storage/uploads/hamburguesas.png')}}">
+                                    <img class="imgrestaurante" src="{{asset('storage').'/'.$restaurante->foto}}">
                                 </td>
                                 <td class="td50">
                                     @if(is_null($restaurante->tipo2))
@@ -61,13 +63,13 @@
                                 @if(Session::get('tipouser') == 'admin')
                                     <td class="td50">
                                         <td class="td25"><form action="{{url('modificar/'.$restaurante->id)}}" method="GET">
-                                            <button class= "" type="submit" name="Modificar" value="Modificar">Modificar</button>
+                                            <button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button>
                                         </form></td>
                                         <td class="td25"><form action="{{url('eliminar/'.$restaurante->id)}}" method="POST">
                                             @csrf
                                             {{method_field('DELETE')}}
                     
-                                            <button class= "" type="submit" name="Eliminar" value="Eliminar">Eliminar</button>
+                                            <button class="boton_eliminar_restaurante" type="submit" name="Eliminar" value="Eliminar">Eliminar</button>
                                         </form></td>
                                     </td>
                                 @else
