@@ -1,5 +1,18 @@
 window.onload = function() {
     leerJS();
+    var modal = document.getElementById("myModal");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
 
 function objetoAjax() {
@@ -48,9 +61,7 @@ function leerJS() {
                     recarga += '<td class="td25"><form action="./modificar/' + datos[i].id + '" method="GET"><button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
-                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" id="myBtn">Ver mas información</button>';
-                    recarga += '<div id="myModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="close">&times;</span><h1 class="h1_modal" id="nombreRestaurante">Preuba</h1></div>';
-                    recarga += '<div class="modal-body"><p id="precio">Preuba</p><p id="tipo">Preuba</p><p id="tipo2">Preuba</p><p id="descripcion">Preuba</p></div></td>';
+                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + '); return false;">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
@@ -96,9 +107,7 @@ function cocinaJS(numero) {
                     recarga += '<td class="td25"><form method="GET"><button class= "boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
-                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" id="myBtn">Ver mas información</button>';
-                    recarga += '<div id="myModal" class="modal"><div class="modal-content"><div class="modal-header"><span class="close">&times;</span><h1 class="h1_modal" id="nombreRestaurante">Preuba</h1></div>';
-                    recarga += '<div class="modal-body"><p id="precio">Preuba</p><p id="tipo">Preuba</p><p id="tipo2">Preuba</p><p id="descripcion">Preuba</p></div></td>';
+                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" id="myBtn">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
@@ -131,22 +140,11 @@ function eliminarJS(id) {
     ajax.send(formData)
 }
 
-var modal = document.getElementById("myModal");
-
-var btn = document.getElementById("myBtn");
-
-var span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function() {
+function openmodal(id) {
+    var modal = document.getElementById("myModal");
     modal.style.display = "block";
+    var mheader = document.getElementById("mheader");
+    var mbody = document.getElementById("mbody");
+    mheader.innerHTML = "<h1>Nota #" + id + "</h1>";
 }
-
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+/* al usar ajax lo que estan dentro del los div mheader y mbody se sobreescribe por el contenido de ajax, todo */
