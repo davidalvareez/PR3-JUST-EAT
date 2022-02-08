@@ -28,21 +28,27 @@
                 <h1 class="h1_crear_restaurante">CREAR RESTAURANTE</h1>
                 <input class="input_crear_restaurante" type="text" id="nombre" name="nombre" placeholder="Introduce el nombre..." value="{{old('nombre')}}">
                 @error('nombre')
+                {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="text" id="precio" name="precio" placeholder="Introduce el precio...">
                 @error('precio')
+                {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="text" id="nacionalidad" name="nacionalidad" placeholder="Introduce la nacionalidad...">
                 @error('nacionalidad')
+                {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="text" id="tipo" name="tipo" placeholder="Introduce el primer tipo de cocina...">
                 @error('nacionalidad')
+                {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="text" name="tipo2" placeholder="Introduce el segundo tipo... (opcional)">
                 @error('nacionalidad')
+                {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="file" id="foto" name="foto">
                 @error('foto')
+                {{$message}}
                 @enderror
                 <input class="inputregistro" type="submit" value="Crear restaurante">
             </form>
