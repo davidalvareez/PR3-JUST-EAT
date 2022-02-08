@@ -25,7 +25,7 @@ function validarRegistro() {
     let email = document.getElementById('email').value;
     let pass = document.getElementById('password').value;
     let passwordvalidar = document.getElementById('passwordvalidar').value;
-    let error=document.getElementById('error').value;
+        
 
     
     
@@ -65,20 +65,23 @@ function validarRegistro() {
             icon: "error",
         });
         return false;
-    }else if (error == 'error') {
-        swal.fire({
-            title: "Error",
-            icon: "error",
-            html:
-                'Este correo ya ha sido utilizado.'+
-                ' Vuelve al <a href="./login">inicio de sesion</a> ',
-        });
-        return false;
     }else {
         return true;
     }
 }
 
+function validarCorreo() {
+    if (document.getElementById("error").value == "errormio") {
+        swal.fire({
+            title: "Error",
+            icon: "error",
+            html:
+                'Este correo ya ha sido utilizado.'+
+                ' Vuelve al <a href="./login">inicio de sesión</a> ',
+        });
+        return false;
+    }
+}
 function validarCrear() {
     let nombre = document.getElementById('nombre').value;
     let precio = document.getElementById('precio').value;
