@@ -48,7 +48,21 @@ function validarRegistro() {
             icon: "error",
         });
         return false;
-    } else {
+    }else if(pass.length < 8){
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener mas de 8 caracteres",
+            icon: "error",
+        });
+        return false;
+    }else if(pass.length > 100){
+        swal.fire({
+            title: "Error",
+            text: "La contraseña debe tener menos de 100 caracteres",
+            icon: "error",
+        });
+        return false;
+    }else {
         return true;
     }
 }
