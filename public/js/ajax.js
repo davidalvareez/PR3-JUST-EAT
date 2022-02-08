@@ -1,6 +1,5 @@
 window.onload = function() {
     leerJS();
-    isOn = false;
 }
 
 function objetoAjax() {
@@ -22,6 +21,7 @@ function objetoAjax() {
 
 function leerJS() {
     var cuadro = document.getElementById("cuadro");
+    console.log(document.getElementById('filtro').value);
     /* var tipo = document.getElementById("tipo"); */
     /* var lateral = document.getElementById("lateral"); */
     var formData = new FormData();
@@ -50,36 +50,19 @@ function leerJS() {
             }
             cuadro.innerHTML = recarga;
             for (let j = 0; j < nacionalidades.length; j++) {
-                ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="botonesJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
+                ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
             }
             lateral.innerHTML = ul;
         }
-        /* else if (this.readyState != 4 || this.status != 200) {
-                   alert(this.responseText);
-               } */
     }
     ajax.send(formData);
 }
-var nacionalidad = [];
 
-function botonesJS(numero) {
-    var nacion = document.getElementsByClassName('nacionalidad')[numero];
-    if (!isOn) {
-        isOn = true;
-        nacionalidad.push(nacion.value);
-        console.log(nacionalidad);
-    } else {
-        isOn = false;
-        nacionalidad.pop();
-        console.log(nacionalidad);
-    }
-    cocinaJS();
-}
-
-function cocinaJS() {
+function cocinaJS(numero) {
     var cuadro = document.getElementById("cuadro");
     /* var tipo = document.getElementById("tipo"); */
     var lateral = document.getElementById("lateral");
+    var nacionalidad = document.getElementsByClassName('nacionalidad')[numero].value;
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
     formData.append('filtro', document.getElementById('filtro').value);
@@ -108,13 +91,10 @@ function cocinaJS() {
             }
             cuadro.innerHTML = recarga;
             for (let j = 0; j < nacionalidades.length; j++) {
-                ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="botonesJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
+                ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
             }
             lateral.innerHTML = ul;
         }
-        /* else if (this.readyState != 4 || this.status != 200) {
-                   alert(this.responseText);
-               } */
     }
     ajax.send(formData);
 }
