@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{!! asset('css/styles.css') !!}">
     <link rel="stylesheet" href="{!! asset('css/fontawesome/css/all.css') !!}">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" type="image/x-icon" href="{{asset('storage/uploads/hamburguesas.png')}}">
     <script src="{!! asset('js/validacion.js') !!}"></script>
     <title>Just Eaten</title>
