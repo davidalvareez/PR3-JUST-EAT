@@ -34,7 +34,7 @@
                 @error('precio')
                 {{$message}}
                 @enderror
-                <textarea class="input_crear_restaurante" name="descripcion" id="descripcion" rows="5" cols="30" placeholder="Introduce la descripción..."></textarea>
+                <textarea style="resize:none" class="input_crear_restaurante" name="descripcion" id="descripcion" rows="5" cols="30" placeholder="Introduce la descripción..."></textarea>
                 @error('descripcion')
                 {{$message}}
                 @enderror
