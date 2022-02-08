@@ -18,9 +18,15 @@ class RestauranteController extends Controller
         return view ('inicio');
     }
     
-    public function mostrarRestaurante(){
+    public function mostrarRestaurante(Request $request){
+        //if para que si no iniciamos sesión no podamos acceder a mostrarRestaurantes
+        if ($request->session()->exists('email')) {
+        //si se ha iniciado sesion mostrará todos los restaurantes
         $listaRestaurantes = DB::table('tbl_restaurante')->get();
         return view('mostrarRestaurantes', compact('listaRestaurantes'));
+        } else {
+            return redirect('../public');
+        }
     }
 
     public function login(){
