@@ -21,7 +21,7 @@ function objetoAjax() {
 
 function leerJS() {
     var cuadro = document.getElementById("cuadro");
-    /* var tipo = document.getElementById("tipo"); */
+    var tipo = document.getElementById("tipo").textContent;
     var lateral = document.getElementById("lateral");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));

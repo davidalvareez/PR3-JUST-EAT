@@ -12,7 +12,7 @@
     <title>Just Eaten</title>
 </head>
 <body>
-    <?php $tipo = (Session::get('tipouser')); echo '<p id="tipo">'.$tipo.'</p>';?>
+    <?php $tipo = (Session::get('tipouser')); echo '<p id="tipo" style="color:white;">'.$tipo.'</p>';?>
     <div class="fondo2">
         <div class="logo">
             <h1 class="h1headerizq"><i class="fas fa-utensils"></i> Just Eaten</h1>
@@ -32,9 +32,23 @@
                 </td>
                 @if(Session::get('tipouser') == 'admin')
                     <td class="td75" id="cuadro">
+                        <td class="td25"><form action="" method="GET">
+                            <button class= "" type="submit" name="Modificar" value="Modificar">Modificar</button>
+                        </form></td>
+                        <td class="td25"><form action="" method="POST">
+                            <button class= "" type="submit" name="Eliminar" value="Eliminar">Eliminar</button>
+                        </form></td>
                     </td>
                 @else
                     <td class="td75" id="cuadro">
+                        <td class="td50">
+                            <td class="td50">
+                                <form action="">
+                                    <span>Valora este restaurante! EXTRA</span>
+                                    <input type="number" name="" id="">
+                                </form>
+                            </td>
+                        </td>
                     </td>
                 @endif
             </tr>

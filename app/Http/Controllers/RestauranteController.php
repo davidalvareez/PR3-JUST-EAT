@@ -174,14 +174,7 @@ public function modificarPut(Request $request){
             return response()->json([
                 'datos' => $datos,
                 'nacionalidades' => $nacionalidades,
-                'nacion' => $request['nacionalidad'],
-            ]);
-        }elseif ($request->has('nacionalidad')) {
-            $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
-            $datos = DB::table('tbl_restaurante')->select('*')->where('nacionalidad','=',$request['nacionalidad'])->get();
-            return response()->json([
-                'datos' => $datos,
-                'nacionalidades' => $nacionalidades,
+                /* 'nacion' => $request['nacionalidad'], */
             ]);
         }else{
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
