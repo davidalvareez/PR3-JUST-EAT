@@ -9,13 +9,13 @@ function validarLogin() {
             icon: "error",
         });
         return false;
-    }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         swal.fire({
             title: "Error",
             text: "Introduce un email correcto",
             icon: "error",
         });
-        return false; 
+        return false;
     } else {
         return true;
     }
@@ -34,14 +34,14 @@ function validarRegistro() {
             icon: "error",
         });
         return false;
-    }else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         swal.fire({
             title: "Error",
             text: "Introduce un email correcto",
             icon: "error",
         });
         return false;
-    }else if(pass != passwordvalidar){
+    } else if (pass != passwordvalidar) {
         swal.fire({
             title: "Error",
             text: "Las contraseñas tienen que coincidir",
@@ -57,17 +57,18 @@ function validarCrear() {
     let nombre = document.getElementById('nombre').value;
     let precio = document.getElementById('precio').value;
     let foto = document.getElementById('foto').value;
+    let descripcion = document.getElementById('descripcion').value;
     let nacionalidad = document.getElementById('nacionalidad').value;
     let tipo = document.getElementById('tipo').value;
 
-    if (nombre == '' || precio == '' || foto == '' || nacionalidad == '' || tipo == '') {
+    if (nombre == '' || precio == '' || foto == '' || descripcion == '' || nacionalidad == '' || tipo == '') {
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
             icon: "error",
         });
         return false;
-    }else {
+    } else {
         return true;
     }
 }
@@ -75,17 +76,18 @@ function validarCrear() {
 function validarModificar() {
     let nombre = document.getElementById('nombre').value;
     let precio = document.getElementById('precio').value;
+    let descripcion = document.getElementById('descripcion').value;
     let nacionalidad = document.getElementById('nacionalidad').value;
     let tipo = document.getElementById('tipo').value;
-    
-    if (nombre == '' || precio == '' || nacionalidad == '' || tipo == '') {
+
+    if (nombre == '' || precio == '' || descripcion == '' || nacionalidad == '' || tipo == '') {
         swal.fire({
             title: "Error",
             text: "Tienes que rellenar todos los datos",
             icon: "error",
         });
         return false;
-    }else {
+    } else {
         return true;
     }
 }
