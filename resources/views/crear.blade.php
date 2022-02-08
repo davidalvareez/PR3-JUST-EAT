@@ -34,16 +34,20 @@
                 @error('precio')
                 {{$message}}
                 @enderror
+                <textarea class="input_crear_restaurante" name="descripcion" id="descripcion" rows="5" cols="30" placeholder="Introduce la descripción..."></textarea>
+                @error('descripcion')
+                {{$message}}
+                @enderror
                 <input class="input_crear_restaurante" type="text" id="nacionalidad" name="nacionalidad" placeholder="Introduce la nacionalidad...">
                 @error('nacionalidad')
                 {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="text" id="tipo" name="tipo" placeholder="Introduce el primer tipo de cocina...">
-                @error('nacionalidad')
+                @error('tipo')
                 {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="text" name="tipo2" placeholder="Introduce el segundo tipo... (opcional)">
-                @error('nacionalidad')
+                @error('tipo2')
                 {{$message}}
                 @enderror
                 <input class="input_crear_restaurante" type="file" id="foto" name="foto">
