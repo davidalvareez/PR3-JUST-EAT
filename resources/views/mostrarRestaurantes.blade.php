@@ -35,8 +35,12 @@
                         <span class="">Nombre</span>
                         <input class="inputfiltro" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
                         <span class="">Todas las cocinas A-Z:</span>
+                        <button type="button" onclick="leerJS()">Reiniciar</button>
                         <ul class="ulfiltro" id="lateral">
                     </div>
+                    </ul>
+                    <span class="">Valoraciones</span>
+                    <ul id="lvaloracion">
                     </ul>
                 </td>
                 <td class="td75filtro" id="cuadro">
