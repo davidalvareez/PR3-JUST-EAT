@@ -185,7 +185,7 @@ class RestauranteController extends Controller
     //Zona filtro
 
     public function leer(Request $request){
-        if ($request->has('nacionalidad','filtro')) {
+        if ($request->has('nacionalidad')) {
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
             $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
             $datos = DB::table('tbl_restaurante')->select('*')->where('nacionalidad','=',$request['nacionalidad'])->where('nombre','like',$request['filtro'].'%')->get();
@@ -194,7 +194,7 @@ class RestauranteController extends Controller
                 'nacionalidades' => $nacionalidades,
                 'valoraciones' => $valoraciones,
             ]);
-        }else if ($request->has('valoracion','filtro')) {
+        }else if ($request->has('valoracion')) {
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
             $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
             $datos = DB::table('tbl_restaurante')->select('*')->where('valoracion','=',$request['valoracion'])->where('nombre','like',$request['filtro'].'%')->get();
@@ -203,10 +203,19 @@ class RestauranteController extends Controller
                 'nacionalidades' => $nacionalidades,
                 'valoraciones' => $valoraciones,
             ]);
-        }else{
+        }else if ($request->has('filtro')) {
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
             $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
             $datos = DB::table('tbl_restaurante')->select('*')->where('nombre','like',$request['filtro'].'%')->get();
+            return response()->json([
+                'datos' => $datos,
+                'nacionalidades' => $nacionalidades,
+                'valoraciones' => $valoraciones,
+            ]);
+        }else{
+            $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
+            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
+            $datos = DB::table('tbl_restaurante')->select('*')->get();
             return response()->json([
                 'datos' => $datos,
                 'nacionalidades' => $nacionalidades,

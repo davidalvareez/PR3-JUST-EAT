@@ -33,12 +33,13 @@
                 <td class="td25">
                     <div class="div_filtro">
                         <span class="">Nombre</span>
-                        <input class="inputfiltro" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
+                        <input class="inputfiltro" type="text" onkeyup="filtroJS()" name="" id="filtro"><br>
                         <span class="">Todas las cocinas A-Z:</span>
                         <button class="botonfiltro" type="button" onclick="leerJS()">Reiniciar</button>
                         <ul class="ulfiltro" id="lateral">
                         </ul>
                         <span class="">Valoraciones</span>
+                        <button class="botonfiltro" type="button" onclick="leerJS()">Reiniciar</button>
                         <ul class="ulfiltro" id="lvaloracion">
                         </ul>
                     </div>
