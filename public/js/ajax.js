@@ -58,13 +58,13 @@ function leerJS() {
             for (let i = 0; i < datos.length; i++) {
                 recarga += '<div class="cartaproductos">';
                 recarga += '<table class="tablaproductos">';
-                recarga += '<td class="td25"><img style="width:200px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
-                recarga += '<td class="td25"><h2>' + datos[i].nombre + '</h2><br><br><p>Precio medio: ' + datos[i].precio + ' · ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + '</p></td>';
+                recarga += '<td class="td10"><img style="width:120px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
+                recarga += '<td class="td60"><h2>' + datos[i].nombre + ' (' + datos[i].precio + ')' + '</h2><p> ' + datos[i].nacionalidad + ' · ' + datos[i].tipo +' · '+datos[i].tipo2 +' '+' <p class="valoracion">'+ datos[i].valoracion +'<i class="fas fa-star"></i></p>'+ '</p></td>';
                 if (tipo == 'admin') {
                     recarga += '<td class="td25"><form action="./modificar/' + datos[i].id + '" method="GET"><button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
-                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + '); return false;">Ver mas información</button></td>';
+                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + ', `' + datos[i].precio + '`' + ', `' + datos[i].nombre + '`' + ', `' + datos[i].nacionalidad + '`' + ', `' + datos[i].descripcion + '`' + ', `' + datos[i].tipo + '`' + ', `' + datos[i].tipo2 + '`' + ', `' + datos[i].valoracion + '`' + ', );return false;">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
@@ -163,14 +163,14 @@ function valorJS(numero) {
             /* Leerá la respuesta que es devuelta por el controlador: */
             for (let i = 0; i < datos.length; i++) {
                 recarga += '<div class="cartaproductos">';
-                recarga += '<table class="tablaproductos">';
-                recarga += '<td class="td25"><img style="width:200px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
-                recarga += '<td class="td25"><h2>' + datos[i].nombre + '</h2><br><br><p>Precio medio: ' + datos[i].precio + ' · ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + '</p></td>';
+                recarga += '<table class="tablaproductosfiltrados">';
+                recarga += '<td class="td10"><img style="width:120px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
+                recarga += '<td class="td60"><h2>' + datos[i].nombre + ' (' + datos[i].precio + ')' + '</h2><p> ' + datos[i].nacionalidad + ' · ' + datos[i].tipo +' · '+datos[i].tipo2 +' '+' <p class="valoracion">'+ datos[i].valoracion +'<i class="fas fa-star"></i></p>'+ '</p></td>';
                 if (tipo == 'admin') {
                     recarga += '<td class="td25"><form method="GET"><button class= "boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
-                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" id="myBtn">Ver mas información</button></td>';
+                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + ', `' + datos[i].precio + '`' + ', `' + datos[i].nombre + '`' + ', `' + datos[i].nacionalidad + '`' + ', `' + datos[i].descripcion + '`' + ', `' + datos[i].tipo + '`' + ', `' + datos[i].tipo2 + '`' + ', `' + datos[i].valoracion + '`' + ', );return false;">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
@@ -207,11 +207,23 @@ function eliminarJS(id) {
     ajax.send(formData)
 }
 
-function openmodal(id) {
+function openmodal(id, precio, nombre, nacionalidad, descripcion, tipo, tipo2, valoracion) {
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
     var mheader = document.getElementById("mheader");
     var mbody = document.getElementById("mbody");
-    mheader.innerHTML = "<h1>Nota #" + id + "</h1>";
+    mheader.innerHTML = "<h1>Restaurante " + nombre + "</h1>";
+    mheader.innerHTML += "<hr>";
+    mbody.innerHTML = "<br>";
+    mbody.innerHTML +="<p>Este restaurante tiene un precio medio de "+precio+"</p>";
+    mbody.innerHTML +="<p>La nacionalidad de este restaurante es "+nacionalidad+"</p>";
+    mbody.innerHTML +="<p>El tipo de comida: "+tipo+"</p>";
+    mbody.innerHTML +="<p>Tipo de comida opcional: "+tipo2+"</p>";
+    mbody.innerHTML +="<br>";
+    mbody.innerHTML +="<p>"+descripcion+"</p>";
+    mbody.innerHTML +="<p class='valoracion'>Tiene una valoración de "+valoracion+"<i class='fas fa-star'></i></p>";
+    mbody.innerHTML +="<br>";
+    mbody.innerHTML +="<hr>";
+    mbody.innerHTML +="<h2>¿Quieres valorar este restaurante?</h2>";
 }
 /* al usar ajax lo que estan dentro del los div mheader y mbody se sobreescribe por el contenido de ajax, todo */

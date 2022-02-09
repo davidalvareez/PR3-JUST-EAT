@@ -31,17 +31,19 @@
         <table class="productos">
             <tr>
                 <td class="td25">
-                    <span class="">NombreFiltro</span>
-                    <input class="" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
-                    <span class="">Todas las cocinas A-Z</span>
-                    <button type="button" onclick="leerJS()">Reiniciar</button>
-                    <ul id="lateral">
+                    <div class="div_filtro">
+                        <span class="">Nombre</span>
+                        <input class="inputfiltro" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
+                        <span class="">Todas las cocinas A-Z:</span>
+                        <button type="button" onclick="leerJS()">Reiniciar</button>
+                        <ul class="ulfiltro" id="lateral">
+                    </div>
                     </ul>
                     <span class="">Valoraciones</span>
                     <ul id="lvaloracion">
                     </ul>
                 </td>
-                <td class="td75" id="cuadro">
+                <td class="td75filtro" id="cuadro">
                 </td>
             </tr>
         </table>
@@ -50,13 +52,9 @@
         <div class="modal-content">
             <div class="modal-header" id="mheader">
                 <span class="close">&times;</span>
-                <h1 class="h1_modal" id="nombreRestaurante">Preuba</h1>
+                <h1 class="h1_modal" id="nombreRestaurante"></h1>
             </div>
             <div class="modal-body" id="mbody">
-                <p id="precio">Preuba</p>
-                <p id="tipo">Preuba</p>
-                <p id="tipo2">Preuba</p>
-                <p id="descripcion">Preuba</p>
             </div>
         </div>
     </div>
