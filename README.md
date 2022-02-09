@@ -1,66 +1,87 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# JUST EATEN
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+El proyecto consiste en una página web que muestre los restaurantes disponibles en tu ciudad. Si inciamos sesión tenemos la opción de utilizar los filtros, que gracias a ellos podemos buscar por el tipo de restaurante que nos interesa. Los administradores tendrán acceso a la creación, modificación y eliminación de restaurantes.
 
-## About Laravel
+## Comenzando 🚀
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Pre-requisitos 📋
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Listado de software y como instalarlo:
+Xampp:
+>1. Entras en https://www.apachefriends.org/es/download.html
+>2. Seleccionas tu Sistema Operativo (Windows, Linux, OS X).
+>3. Le das a Siguente (Siguiendo los pasos que te indica el instalador).
 
-## Learning Laravel
+Si quieres modificar el codigo fuente debes instalarte un editor de texto:
+Visual Studio Code:
+>1. Entras en https://code.visualstudio.com/download
+>2. Seleccionas tu Sistema Operativo (Windows, Linux, OS X).
+>3. Le das a Siguente (Siguiendo los pasos que te indica el instalador).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Si quieres una aplicacion para controlar las versiones te puedes instalar git + github(_github via web_):
+>1. Entras en https://git-scm.com/downloads
+>2. Seleccionas tu Sistema Operativo (Windows, Linux, OS X).
+>3. Le das a Siguente (Siguiendo los pasos que te indica el instalador).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Si quieres continuar desarrollando la página web tendrás que instalar Laravel:
+>1. Entras en https://laravel.com/docs/9.x
+>2. Sigues la documentación para la instalación
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Instalación 🔧
 
-### Premium Partners
+Comentaremos paso a paso la instalación y como proceder para poder hacer funcional el proyecto en nuestro dispositivo:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+SI TIENES GIT + GITHUB: 
+>1. Abres Visual Studio Code
+>2. Seleccionas Archivo (_localizado arriba a la izquierda_) > Abrir Carpeta > Localizas donde tienes la carpeta htdocs, en mi caso en "C:>xampp>htdocs" y la abres.
+>3. Seleccionas la opcion de Terminal (_localizado arriba a la izquierda_).
+>4. En mi repositorio de GitHub, te diriges a Code (en verde) y copias la url.
+>5. En la terminal escribes "git clone _urlcopiada_".
+>6. Ya tienes el proyecto funcional junto con un controlador de versiones.
 
-## Contributing
+SI NO TIENES GIT + GITHUB: 
+>1. En mi repositorio de GitHub, te diriges a Code (en verde) y seleccionas la opcion de "Download ZIP".
+>2. Entramos en Explorador de Archivos y nos situamos *C*: (o donde esté situada la carpeta xampp).
+>2. Entramos a la carpeta *xampp*.
+>3. Entramos a la carpeta *htdocs*.
+>4. Descomprimes el ZIP y se te creará la carpeta del proyecto.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+*COSAS IMPORTANTES A TENER EN CUENTA:*
+    · Para poder acceder a la pagina y que sea totalmente funcional os muestro los usuarios:
+        · Usuario ADMINISTRADOR: laura@gmail.com Password: 12345.
+        · Usuario cliente: usuario@gmail.com Password: 12345678.
+    · A partir de el fichero .env.example tenemos que crear un nuevo archivo llamado .env, en ese archivo pegaremos todo mismo contenido que hay en .env.example
+      Después cambiamos la parte de la base de datos para poder conectarla:
+        DB_CONNECTION=[tipo de base de datos]
+        DB_HOST=[host]
+        DB_PORT=[puerto]
+        DB_DATABASE=[nombre base de datos]
+        DB_USERNAME=[nombre usuario]
+        DB_PASSWORD=[nombre contraseña]
+        
+    · Para que se nos muestre la página correctamente tendremos que ejecutar los siguientes comandos en la terminal:
+        · composer install
+        · php artisan key:generate
+        · php artisan storage:link
+        
+    · Las imágenes para la página web puedes encontrarlas en public/img, debes añadirlas en public/storage/uploads para que puedan mostrarse.
+        
+## Construido con 🛠️
 
-## Code of Conduct
+    XAMPP - Compilador 
+    Visual Studio Code - Editor de texto
+    GIT + GITHUB - Controlador de versiones
+    Laravel - Para desarrollar la página web
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Autores
+* **Laura Fernández** [laurafernandez18](https://github.com/LauraFernandez18)
+* **David Álvarez** [davidalvareez](https://github.com/davidalvareez)
+* **Diego Soledispa** [Dsoledispa](https://github.com/Dsoledispa)
 
-## Security Vulnerabilities
+## Expresiones de Gratitud 🎁
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    Comenta a tu familia sobre este proyecto o a través de las redes sociales 📢
+    Da las gracias públicamente 🤓, o no, me da exactamente igual.
