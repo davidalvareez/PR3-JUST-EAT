@@ -1,5 +1,7 @@
 window.onload = function() {
+    //cuando se abra la pantalla, que se muestren las consultas
     leerJS();
+    //definimos variables de modal
     var modal = document.getElementById("myModal");
 
     var span = document.getElementsByClassName("close")[0];
@@ -35,10 +37,13 @@ function objetoAjax() {
 function leerJS() {
     var cuadro = document.getElementById("cuadro");
     var tipo = document.getElementById("tipo").textContent;
+    //lista de nacionalidades
     var lateral = document.getElementById("lateral");
+    //lista de valoraciones
     var lvaloracion = document.getElementById("lvaloracion");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
+
 
     /* Inicializar un objeto AJAX */
     var ajax = objetoAjax();
@@ -47,32 +52,38 @@ function leerJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            // definir las tres consultas sql
             var datos = respuesta.datos;
             var nacionalidades = respuesta.nacionalidades;
             var valoraciones = respuesta.valoraciones;
             var recarga = '';
             var ul = '';
             var ul2 = '';
-            /* Leerá la respuesta que es devuelta por el controlador: */
+            /* Leerá la respuesta datos que es devuelta por el controlador: */
             for (let i = 0; i < datos.length; i++) {
                 recarga += '<div class="cartaproductos">';
                 recarga += '<table class="tablaproductos">';
                 recarga += '<td class="td10"><img style="width:120px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
                 recarga += '<td class="td60"><h2>' + datos[i].nombre + ' (' + datos[i].precio + ')' + '</h2><p> ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + ' · ' + datos[i].tipo2 + ' ' + ' <p class="valoracion">' + datos[i].valoracion + '<i class="fas fa-star"></i></p>' + '</p></td>';
                 if (tipo == 'admin') {
+                    //modificar
                     recarga += '<td class="td25"><form action="./modificar/' + datos[i].id + '" method="GET"><button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    //eliminar
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
+                    //modal
                     recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + ', `' + datos[i].precio + '`' + ', `' + datos[i].nombre + '`' + ', `' + datos[i].nacionalidad + '`' + ', `' + datos[i].descripcion + '`' + ', `' + datos[i].tipo + '`' + ', `' + datos[i].tipo2 + '`' + ', `' + datos[i].valoracion + '`' + ', );return false;">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
             }
             cuadro.innerHTML = recarga;
+            /* Leerá la respuesta nacionalidades que es devuelta por el controlador: */
             for (let j = 0; j < nacionalidades.length; j++) {
                 ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
             }
             lateral.innerHTML = ul;
+            /* Leerá la respuesta valoraciones que es devuelta por el controlador: */
             for (let k = 0; k < valoraciones.length; k++) {
                 ul2 += '<li><button type="button" class="valoracions" value="' + valoraciones[k].valoracion + '" onclick="valorJS(' + k + ')">' + valoraciones[k].valoracion + '</button></li>';
             }
@@ -85,7 +96,9 @@ function leerJS() {
 function filtroJS() {
     var cuadro = document.getElementById("cuadro");
     var tipo = document.getElementById("tipo").textContent;
+    //lista de nacionalidades
     var lateral = document.getElementById("lateral");
+    //lista de valoraciones
     var lvaloracion = document.getElementById("lvaloracion");
     var formData = new FormData();
     formData.append('_token', document.getElementById('token').getAttribute("content"));
@@ -98,6 +111,7 @@ function filtroJS() {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            // definir las tres consultas sql
             var datos = respuesta.datos;
             var nacionalidades = respuesta.nacionalidades;
             var valoraciones = respuesta.valoraciones;
@@ -111,19 +125,24 @@ function filtroJS() {
                 recarga += '<td class="td10"><img style="width:120px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
                 recarga += '<td class="td60"><h2>' + datos[i].nombre + ' (' + datos[i].precio + ')' + '</h2><p> ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + ' · ' + datos[i].tipo2 + ' ' + ' <p class="valoracion">' + datos[i].valoracion + '<i class="fas fa-star"></i></p>' + '</p></td>';
                 if (tipo == 'admin') {
+                    //modificar
                     recarga += '<td class="td25"><form action="./modificar/' + datos[i].id + '" method="GET"><button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    //eliminar
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
+                    //modal
                     recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + ', `' + datos[i].precio + '`' + ', `' + datos[i].nombre + '`' + ', `' + datos[i].nacionalidad + '`' + ', `' + datos[i].descripcion + '`' + ', `' + datos[i].tipo + '`' + ', `' + datos[i].tipo2 + '`' + ', `' + datos[i].valoracion + '`' + ', );return false;">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
             }
             cuadro.innerHTML = recarga;
+            /* Leerá la respuesta nacionalidades que es devuelta por el controlador: */
             for (let j = 0; j < nacionalidades.length; j++) {
                 ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
             }
             lateral.innerHTML = ul;
+            /* Leerá la respuesta valoraciones que es devuelta por el controlador: */
             for (let k = 0; k < valoraciones.length; k++) {
                 ul2 += '<li><button type="button" class="valoracions" value="' + valoraciones[k].valoracion + '" onclick="valorJS(' + k + ')">' + valoraciones[k].valoracion + '</button></li>';
             }
@@ -136,7 +155,9 @@ function filtroJS() {
 function cocinaJS(numero) {
     var cuadro = document.getElementById("cuadro");
     var tipo = document.getElementById("tipo").textContent;
+    //lista de nacionalidades
     var lateral = document.getElementById("lateral");
+    //lista de valoraciones
     var lvaloracion = document.getElementById("lvaloracion");
     var nacionalidad = document.getElementsByClassName('nacionalidad')[numero].value;
     var formData = new FormData();
@@ -151,6 +172,7 @@ function cocinaJS(numero) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            // definir las tres consultas sql
             var datos = respuesta.datos;
             var nacionalidades = respuesta.nacionalidades;
             var valoraciones = respuesta.valoraciones;
@@ -164,19 +186,24 @@ function cocinaJS(numero) {
                 recarga += '<td class="td10"><img style="width:120px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
                 recarga += '<td class="td60"><h2>' + datos[i].nombre + ' (' + datos[i].precio + ')' + '</h2><p> ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + ' · ' + datos[i].tipo2 + ' ' + ' <p class="valoracion">' + datos[i].valoracion + '<i class="fas fa-star"></i></p>' + '</p></td>';
                 if (tipo == 'admin') {
-                    recarga += '<td class="td25"><form method="GET"><button class= "boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    //modificar
+                    recarga += '<td class="td25"><form action="./modificar/' + datos[i].id + '" method="GET"><button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    //eliminar
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
-                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" id="myBtn">Ver mas información</button></td>';
+                    //modal
+                    recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + ', `' + datos[i].precio + '`' + ', `' + datos[i].nombre + '`' + ', `' + datos[i].nacionalidad + '`' + ', `' + datos[i].descripcion + '`' + ', `' + datos[i].tipo + '`' + ', `' + datos[i].tipo2 + '`' + ', `' + datos[i].valoracion + '`' + ', );return false;">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
             }
             cuadro.innerHTML = recarga;
+            /* Leerá la respuesta nacionalidades que es devuelta por el controlador: */
             for (let j = 0; j < nacionalidades.length; j++) {
                 ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
             }
             lateral.innerHTML = ul;
+            /* Leerá la respuesta valoraciones que es devuelta por el controlador: */
             for (let k = 0; k < valoraciones.length; k++) {
                 ul2 += '<li><button type="button" class="valoracions" value="' + valoraciones[k].valoracion + '" onclick="valorJS(' + k + ')">' + valoraciones[k].valoracion + '</button></li>';
             }
@@ -189,7 +216,9 @@ function cocinaJS(numero) {
 function valorJS(numero) {
     var cuadro = document.getElementById("cuadro");
     var tipo = document.getElementById("tipo").textContent;
+    //lista de nacionalidades
     var lateral = document.getElementById("lateral");
+    //lista de valoraciones
     var lvaloracion = document.getElementById("lvaloracion");
     var valoracions = document.getElementsByClassName('valoracions')[numero].value;
     var formData = new FormData();
@@ -204,8 +233,8 @@ function valorJS(numero) {
     ajax.onreadystatechange = function() {
         if (ajax.readyState == 4 && ajax.status == 200) {
             var respuesta = JSON.parse(this.responseText);
+            // definir las tres consultas sql
             var datos = respuesta.datos;
-            console.log(datos);
             var nacionalidades = respuesta.nacionalidades;
             var valoraciones = respuesta.valoraciones;
             var recarga = '';
@@ -218,19 +247,24 @@ function valorJS(numero) {
                 recarga += '<td class="td10"><img style="width:120px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
                 recarga += '<td class="td60"><h2>' + datos[i].nombre + ' (' + datos[i].precio + ')' + '</h2><p> ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + ' · ' + datos[i].tipo2 + ' ' + ' <p class="valoracion">' + datos[i].valoracion + '<i class="fas fa-star"></i></p>' + '</p></td>';
                 if (tipo == 'admin') {
-                    recarga += '<td class="td25"><form method="GET"><button class= "boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    //modificar
+                    recarga += '<td class="td25"><form action="./modificar/' + datos[i].id + '" method="GET"><button class="boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
+                    //eliminar
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
                 } else {
+                    //modal
                     recarga += '<td class="td50"><td class="td50"><button class="botonlogin" onclick="openmodal(' + datos[i].id + ', `' + datos[i].precio + '`' + ', `' + datos[i].nombre + '`' + ', `' + datos[i].nacionalidad + '`' + ', `' + datos[i].descripcion + '`' + ', `' + datos[i].tipo + '`' + ', `' + datos[i].tipo2 + '`' + ', `' + datos[i].valoracion + '`' + ', );return false;">Ver mas información</button></td>';
                 }
                 recarga += '</table>';
                 recarga += '</div>';
             }
             cuadro.innerHTML = recarga;
+            /* Leerá la respuesta nacionalidades que es devuelta por el controlador: */
             for (let j = 0; j < nacionalidades.length; j++) {
                 ul += '<li><button type="button" class="nacionalidad" value="' + nacionalidades[j].nacionalidad + '" onclick="cocinaJS(' + j + ')">' + nacionalidades[j].nacionalidad + '</button></li>';
             }
             lateral.innerHTML = ul;
+            /* Leerá la respuesta valoraciones que es devuelta por el controlador: */
             for (let k = 0; k < valoraciones.length; k++) {
                 ul2 += '<li><button type="button" class="valoracions" value="' + valoraciones[k].valoracion + '" onclick="valorJS(' + k + ')">' + valoraciones[k].valoracion + '</button></li>';
             }
@@ -277,4 +311,3 @@ function openmodal(id, precio, nombre, nacionalidad, descripcion, tipo, tipo2, v
     mbody.innerHTML += "<hr>";
     mbody.innerHTML += "<h2>¿Quieres valorar este restaurante?</h2>";
 }
-/* al usar ajax lo que estan dentro del los div mheader y mbody se sobreescribe por el contenido de ajax, todo */

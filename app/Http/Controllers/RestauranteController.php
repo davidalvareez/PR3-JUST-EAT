@@ -186,36 +186,48 @@ class RestauranteController extends Controller
 
     public function leer(Request $request){
         if ($request->has('nacionalidad')) {
+            //cocinaJS
+            //pasamos la lista de nacionalidades
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
-            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
-            $datos = DB::table('tbl_restaurante')->select('*')->where('nacionalidad','=',$request['nacionalidad'])->where('nombre','like',$request['filtro'].'%')->get();
+            //pasamos la lista de valoraciones
+            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante` where valoracion REGEXP "^[0-9]+$"');
+            $datos = DB::table('tbl_restaurante')->select('*')->orderBy('precio')->where('nacionalidad','=',$request['nacionalidad'])->where('nombre','like',$request['filtro'].'%')->get();
             return response()->json([
                 'datos' => $datos,
                 'nacionalidades' => $nacionalidades,
                 'valoraciones' => $valoraciones,
             ]);
         }else if ($request->has('valoracion')) {
+            //valorJS
+            //pasamos la lista de nacionalidades
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
-            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
-            $datos = DB::table('tbl_restaurante')->select('*')->where('valoracion','=',$request['valoracion'])->where('nombre','like',$request['filtro'].'%')->get();
+            //pasamos la lista de valoraciones
+            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante` where valoracion REGEXP "^[0-9]+$"');
+            $datos = DB::table('tbl_restaurante')->select('*')->orderBy('precio')->where('valoracion','=',$request['valoracion'])->where('nombre','like',$request['filtro'].'%')->get();
             return response()->json([
                 'datos' => $datos,
                 'nacionalidades' => $nacionalidades,
                 'valoraciones' => $valoraciones,
             ]);
         }else if ($request->has('filtro')) {
+            //filtroJS
+            //pasamos la lista de nacionalidades
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
-            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
-            $datos = DB::table('tbl_restaurante')->select('*')->where('nombre','like',$request['filtro'].'%')->get();
+            //pasamos la lista de valoraciones
+            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante` where valoracion REGEXP "^[0-9]+$"');
+            $datos = DB::table('tbl_restaurante')->select('*')->orderBy('precio')->where('nombre','like',$request['filtro'].'%')->get();
             return response()->json([
                 'datos' => $datos,
                 'nacionalidades' => $nacionalidades,
                 'valoraciones' => $valoraciones,
             ]);
         }else{
+            //leerJS
+            //pasamos la lista de nacionalidades
             $nacionalidades=DB::select('SELECT DISTINCT nacionalidad FROM `tbl_restaurante`');
-            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante`');
-            $datos = DB::table('tbl_restaurante')->select('*')->get();
+            //pasamos la lista de valoraciones
+            $valoraciones=DB::select('SELECT DISTINCT valoracion FROM `tbl_restaurante` where valoracion REGEXP "^[0-9]+$"');
+            $datos = DB::table('tbl_restaurante')->select('*')->orderBy('precio')->get();
             return response()->json([
                 'datos' => $datos,
                 'nacionalidades' => $nacionalidades,

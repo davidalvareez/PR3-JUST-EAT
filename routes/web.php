@@ -33,7 +33,7 @@ Route::post('registroPost',[RestauranteController::class, 'registroPost']);
 //ruta para eliminar
 Route::delete('/eliminar/{id}', [RestauranteController::class, 'eliminar']);
 
-//ruta para mostrar y filtro
+//ruta para mostrar y filtro ,AJAX
 Route::post('leer',[RestauranteController::class, 'leer']);
 
 

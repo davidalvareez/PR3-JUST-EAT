@@ -14,6 +14,7 @@
     <title>Just Eaten</title>
 </head>
 <body>
+    {{-- La linea de abajo sirve para pasar la sesion tipo user a js --}}
     <?php $tipo = (Session::get('tipouser')); echo '<p id="tipo" style="color:white;">'.$tipo.'</p>';?>
     <div class="fondo2">
         <div class="logo">
@@ -41,6 +42,7 @@
                         <span class="">Valoraciones</span>
                         <button class="botonfiltro" type="button" onclick="leerJS()">Reiniciar</button>
                         <ul class="ulfiltro" id="lvaloracion">
+                            {{-- contenido principal de AJAX --}}
                         </ul>
                     </div>
 

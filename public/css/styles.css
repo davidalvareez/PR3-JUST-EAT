@@ -1,25 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
-
-*{
+* {
     margin: 0;
     font-family: 'Fjalla One', sans-serif;
 }
 
+
 /*Header*/
-.h1headerizq{
-    color:orangered;
+
+.h1headerizq {
+    color: orangered;
 }
-.h1headerder{
+
+.h1headerder {
     float: right;
-    margin-right:4.2rem;
-    margin-top:-2.5rem;
-    color:black;
+    margin-right: 4.2rem;
+    margin-top: -2.5rem;
+    color: black;
 }
-.logo{
+
+.logo {
     margin-top: 2rem;
     margin-left: 1.5rem;
     background-color: white;
-    z-index:1;
+    z-index: 1;
     border-radius: 10px;
     width: 12rem;
     height: 2.5rem;
@@ -27,29 +30,35 @@
     text-align: center;
     box-shadow: 0 9px 2px -2px orangered;
 }
+
+
 /*Fin header*/
 
 
 /*Fondo pantalla inicio*/
-.fondo{
+
+.fondo {
     width: 100%;
-    height:25rem;
+    height: 25rem;
     background-image: url("../../../PR3-JUST-EAT/storage/app/public/uploads/fondo.jpg");
-    position:absolute;
-    z-index:0;
+    position: absolute;
+    z-index: 0;
     background-position: center;
     background-size: cover;
-    
 }
+
+
 /*Final fondo pantalla inicio*/
 
+
 /*Div mensaje*/
-.mensaje{
+
+.mensaje {
     margin-left: 18rem;
     margin-top: 18.5rem;
     background-color: white;
-    position:absolute;
-    z-index:1;
+    position: absolute;
+    z-index: 1;
     border-radius: 10px;
     width: 50rem;
     height: 8rem;
@@ -57,36 +66,48 @@
     text-align: center;
     box-shadow: 0 9px 2px -2px orangered;
 }
-.h1mensaje{
+
+.h1mensaje {
     padding-top: 1.6rem;
     margin-bottom: 0.5rem;
-    color:orangered;
+    color: orangered;
 }
+
+
 /*Fin div mensaje*/
 
+
 /*Div contenido*/
-.contenido{
-    padding-top:30rem;
+
+.contenido {
+    padding-top: 30rem;
 }
-.txtcontenido{
+
+.txtcontenido {
     margin-left: 5rem;
-    color:orangered;
+    color: orangered;
 }
-.txtcontenido2{
+
+.txtcontenido2 {
     margin-top: 1rem;
     margin-left: 5rem;
 }
+
+
 /*Fin div contenido*/
-.carrusel{
-    margin-top:0.5rem;
+
+.carrusel {
+    margin-top: 0.5rem;
 }
+
+
 /*Cartas de informacion*/
 
-.mensaje2{
+.mensaje2 {
     margin-top: 2rem;
     margin-left: 1.5rem;
     background-color: orangered;
-    z-index:1;
+    z-index: 1;
     border-radius: 10px;
     width: 11rem;
     height: 8rem;
@@ -94,45 +115,55 @@
     text-align: center;
     box-shadow: 0 10px 4px -1px orangered;
 }
-.h3mensaje2{
-    margin-top:1rem;
+
+.h3mensaje2 {
+    margin-top: 1rem;
     margin-left: 1.5rem;
     text-align: center;
     margin-bottom: 1rem;
 }
-.imgcomida{
+
+.imgcomida {
     width: 11rem;
     height: 8rem;
-    border-radius:4px;
+    border-radius: 4px;
 }
-.td20{
-    width:20%;
+
+.td20 {
+    width: 20%;
 }
-.td25{
+
+.td25 {
     width: 25%;
 }
-.td40{
-    width:40%;
+
+.td40 {
+    width: 40%;
 }
-.td50{
+
+.td50 {
     width: 50%;
 }
-.td75{
+
+.td75 {
     width: 75%;
 }
-.contenido2{
-    margin:0;
+
+.contenido2 {
+    margin: 0;
     margin-top: 3rem;
     padding-left: 2rem;
     padding-top: 1rem;
     background-color: rgba(128, 128, 128, 0.198);
 }
-.productos{
+
+.productos {
     margin-top: 1rem;
     padding-right: 5rem;
-    width:100%;
+    width: 100%;
 }
-.cartaproductos{
+
+.cartaproductos {
     margin-top: 2rem;
     margin-left: 0.5rem;
     background-color: white;
@@ -141,17 +172,22 @@
     height: 8rem;
     box-shadow: 0 6px 4px -1px grey;
 }
-.tablaproductos{
+
+.tablaproductos {
     width: 100%;
 }
-.imgrestaurante{
+
+.imgrestaurante {
     border-radius: 10px;
-    width:140px; 
-    height:120px;
+    width: 140px;
+    height: 120px;
     margin-top: 0.1rem;
     margin-left: 0.5rem;
 }
+
+
 /*login*/
+
 .login {
     overflow: hidden;
     width: 100%;
@@ -173,7 +209,6 @@
     text-align: center;
 }
 
-
 .h1_login {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -190,6 +225,7 @@
     background-color: white;
     outline: none;
 }
+
 .row:after {
     content: "";
     display: table;
@@ -267,19 +303,23 @@
     background: orangered;
     color: #fff !important;
 }
+
 .h1_login {
     padding-top: 60px;
     padding-bottom: 20px;
     font-size: 35px;
 }
+
 .h1_register {
     padding-top: 40px;
     padding-bottom: 30px;
     font-size: 35px;
 }
-.msgregistrarse{
-    padding-top:2rem;
+
+.msgregistrarse {
+    padding-top: 2rem;
 }
+
 .boton_modificar_restaurante {
     width: 250px;
     height: 45px;
@@ -319,6 +359,7 @@
     background: red;
     color: #fff !important;
 }
+
 .boton_crear_restaurante {
     width: 250px;
     height: 45px;
@@ -333,6 +374,7 @@
     margin-top: 10px;
     outline: none;
 }
+
 .cuadro_modificar_restaurante {
     height: 38.5rem;
     width: 30rem;
@@ -348,6 +390,7 @@
     background: orangered;
     color: #fff !important;
 }
+
 .cuadro_crear_restaurante {
     height: 38.5rem;
     width: 30rem;
@@ -358,7 +401,8 @@
     align-content: center;
     text-align: center;
 }
-.input_crear_restaurante{
+
+.input_crear_restaurante {
     width: 250px;
     height: 45px;
     margin-bottom: 1rem;
@@ -368,57 +412,76 @@
     background-color: white;
     outline: none;
 }
-.h1_crear_restaurante{
+
+.h1_crear_restaurante {
     padding-top: 17px;
     padding-bottom: 20px;
     font-size: 35px;
 }
 
+
 /*modal*/
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-  
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }
+
+
+/* The Close Button */
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
 .close:hover,
 .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
 }
-.h1_modal{
+
+.h1_modal {
     text-align: center;
 }
 
-.div_filtro{
-    padding-bottom:77.5rem;
+.div_filtro {
+    padding-bottom: 77.5rem;
 }
-.inputfiltro{
+
+.inputfiltro {
     width: 200px;
     height: 25px;
     margin-bottom: 0.5rem;
@@ -428,7 +491,8 @@
     background-color: white;
     outline: none;
 }
-.nacionalidad{
+
+.nacionalidad {
     width: 250px;
     height: 45px;
     border-radius: 7px;
@@ -442,32 +506,46 @@
     margin-top: 10px;
     outline: none;
 }
+
 .nacionalidad:hover {
     background: orangered;
     color: #fff !important;
 }
-.ulfiltro{
-    list-style:none;
-    padding:0;
+
+.ulfiltro {
+    list-style: none;
+    padding: 0;
 }
-.td75filtro{
-    width:75%;
+
+.td75filtro {
+    width: 75%;
     padding-bottom: 400px;
 }
-.td10{
-    width:10%;
+
+.td75filtro2 {
+    width: 75%;
+    padding-bottom: 2000px;
 }
-.td60{
-    width:60%;
+
+.td10 {
+    width: 10%;
+}
+
+.td60 {
+    width: 60%;
     padding-left: 20px;
 }
-.tablaproductosfiltrados{
-    width:100%;
+
+
+/* .tablaproductosfiltrados {
+    width: 100%;
     margin-top: -1000px;
-}
-.valoracion{
+} */
+
+.valoracion {
     color: green;
 }
+
 .botonfiltro {
     width: 100px;
     height: 45px;
@@ -487,7 +565,8 @@
     background: orangered;
     color: #fff !important;
 }
-.valoracions{
+
+.valoracions {
     width: 250px;
     height: 45px;
     border-radius: 7px;
@@ -501,6 +580,7 @@
     margin-top: 10px;
     outline: none;
 }
+
 .valoracions:hover {
     background: orangered;
     color: #fff !important;
