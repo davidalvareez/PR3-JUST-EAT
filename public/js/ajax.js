@@ -110,9 +110,9 @@ function cocinaJS(numero) {
             /* Leerá la respuesta que es devuelta por el controlador: */
             for (let i = 0; i < datos.length; i++) {
                 recarga += '<div class="cartaproductos">';
-                recarga += '<table class="tablaproductos">';
-                recarga += '<td class="td25"><img style="width:200px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
-                recarga += '<td class="td25"><h2>' + datos[i].nombre + '</h2><br><br><p>Precio medio: ' + datos[i].precio + ' · ' + datos[i].nacionalidad + ' · ' + datos[i].tipo + '</p></td>';
+                recarga += '<table class="tablaproductosfiltrados">';
+                recarga += '<td class="td10"><img style="width:120px; height:120px;" src="storage/' + datos[i].foto + '"></td>';
+                recarga += '<td class="td60"><h2>' + datos[i].nombre + ' (' + datos[i].precio + ')' + '</h2><p> ' + datos[i].nacionalidad + ' · ' + datos[i].tipo +' · '+datos[i].tipo2 +' '+' <p class="valoracion">'+ datos[i].valoracion +'<i class="fas fa-star"></i></p>'+ '</p></td>';
                 if (tipo == 'admin') {
                     recarga += '<td class="td25"><form method="GET"><button class= "boton_modificar_restaurante" type="submit" name="Modificar" value="Modificar">Modificar</button></form></td>';
                     recarga += '<td class="td25"><input type="hidden" name="_method" value="delete" id="postDelete"><button class="boton_eliminar_restaurante" onclick="eliminarJS(' + datos[i].id + '); return false;">Eliminar</button></td>';
