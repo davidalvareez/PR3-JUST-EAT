@@ -42,7 +42,7 @@
                         <span class="">Valoraciones</span>
                         <button class="botonfiltro" type="button" onclick="leerJS()">Reiniciar</button>
                         <ul class="ulfiltro" id="lvaloracion">
-                            {{-- contenido principal de ajax --}}
+                            {{-- contenido principal de AJAX --}}
                         </ul>
                     </div>
 
