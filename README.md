@@ -1,6 +1,6 @@
 # JUST EATEN
 
-El proyecto consiste en una página web que muestre restaurantes disponibles en tu ciudad. Si inciamos sesión tenemos la opción de utilizar los filtros, que gracias a ellos podemos buscar por el tipo de restaurante que nos interesa.  
+El proyecto consiste en una página web que muestre los restaurantes disponibles en tu ciudad. Si inciamos sesión tenemos la opción de utilizar los filtros, que gracias a ellos podemos buscar por el tipo de restaurante que nos interesa. Los administradores tendrán acceso a la creación, modificación y eliminación de restaurantes.
 
 ## Comenzando 🚀
 
@@ -25,6 +25,11 @@ Si quieres una aplicacion para controlar las versiones te puedes instalar git + 
 >2. Seleccionas tu Sistema Operativo (Windows, Linux, OS X).
 >3. Le das a Siguente (Siguiendo los pasos que te indica el instalador).
 
+Si quieres continuar desarrollando la página web tendrás que instalar Laravel:
+>1. Entras en https://laravel.com/docs/9.x
+>2. Sigues la documentación para la instalación
+
+
 ### Instalación 🔧
 
 Comentaremos paso a paso la instalación y como proceder para poder hacer funcional el proyecto en nuestro dispositivo:
@@ -44,28 +49,31 @@ SI NO TIENES GIT + GITHUB:
 >3. Entramos a la carpeta *htdocs*.
 >4. Descomprimes el ZIP y se te creará la carpeta del proyecto.
 
-
 *COSAS IMPORTANTES A TENER EN CUENTA:*
     · Para poder acceder a la pagina y que sea totalmente funcional os muestro los usuarios:
-        · Usuario ADMINISTRADOR: admin@admin.com Password: 1234.
-        · Usuario CAMARERO: camarero@camarero.com Password: 1234.
-    · En caso que dentro de la carpeta SERVICES no haya un archivo llamado config.php, se deberá crear y contener la siguiente información:
-        ·<?php
-            define("SERVIDOR", "NOMBRE_SERVIDOR");
-            define("USUARIO", "NOMBRE_USUARIO");
-            define("CONTRASEÑA", "NOMBRECONTRASEÑA");
-            define("BD", "NOMBRE_DATABASE");
-        ?>
-
+        · Usuario ADMINISTRADOR: laura@gmail.com Password: 12345.
+        · Usuario cliente: usuario@gmail.com Password: 12345678.
+    · A partir de el fichero .env.example tenemos que crear un nuevo archivo llamado .env, en ese archivo pegaremos todo mismo contenido que hay en .env.example
+      Después cambiamos la parte de la base de datos para poder conectarla:
+        DB_CONNECTION=[tipo de base de datos]
+        DB_HOST=[host]
+        DB_PORT=[puerto]
+        DB_DATABASE=[nombre base de datos]
+        DB_USERNAME=[nombre usuario]
+        DB_PASSWORD=[nombre contraseña]
+        
+    · Para que se nos muestre la página correctamente tendremos que ejecutar los siguientes comandos en la terminal:
+        · composer install
+        · php artisan key:generate
+        · php artisan storage:link
+        
+        
 ## Construido con 🛠️
 
     XAMPP - Compilador 
     Visual Studio Code - Editor de texto
     GIT + GITHUB - Controlador de versiones
-
-## Versionado
-
-Nuestra version disponible es: _version 0.1.0_.
+    Laravel - Para desarrollar la página web
 
 ## Autores
 * **Laura Fernández** [laurafernandez18](https://github.com/LauraFernandez18)
@@ -75,5 +83,4 @@ Nuestra version disponible es: _version 0.1.0_.
 ## Expresiones de Gratitud 🎁
 
     Comenta a tu familia sobre este proyecto o a través de las redes sociales 📢
-    Invita una cerveza 🍺 o un café ☕ a alguien del equipo, o me pasas un bizum al 670908765 (preferiblemente BIZUM que no me gusta ni el cafe ni la cerveza).
     Da las gracias públicamente 🤓, o no, me da exactamente igual.
