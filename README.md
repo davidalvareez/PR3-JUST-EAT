@@ -1,12 +1,12 @@
-# PR2-ELLEN-RYPLEY21-INDIVIDUAL.
+# JUST EATEN
 
-El proyecto consiste en la creacion de diferentes paginas web para reservar las mesas de nuestro restaurante. Los camareros tendrán que hacer un login, y serán ellos mismos quien asignarán y reservaran la mesa en cuestión a la hora determinada.
+El proyecto consiste en una página web que muestre restaurantes disponibles en tu ciudad. Si inciamos sesión tenemos la opción de utilizar los filtros, que gracias a ellos podemos buscar por el tipo de restaurante que nos interesa.  
 
-##Comenzando## 🚀
+## Comenzando 🚀
 
 Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas.
 
-##Pre-requisitos 📋##
+### Pre-requisitos 📋
 
 Listado de software y como instalarlo:
 Xampp:
@@ -25,7 +25,7 @@ Si quieres una aplicacion para controlar las versiones te puedes instalar git + 
 >2. Seleccionas tu Sistema Operativo (Windows, Linux, OS X).
 >3. Le das a Siguente (Siguiendo los pasos que te indica el instalador).
 
-##Instalación 🔧##
+### Instalación 🔧
 
 Comentaremos paso a paso la instalación y como proceder para poder hacer funcional el proyecto en nuestro dispositivo:
 
@@ -57,21 +57,22 @@ SI NO TIENES GIT + GITHUB:
             define("BD", "NOMBRE_DATABASE");
         ?>
 
-##Construido con 🛠️##
+## Construido con 🛠️
 
     XAMPP - Compilador 
     Visual Studio Code - Editor de texto
     GIT + GITHUB - Controlador de versiones
 
-##Versionado 📌##
+## Versionado
 
 Nuestra version disponible es: _version 0.1.0_.
 
-##Autores ✒️##
+## Autores
+* **Laura Fernández** [laurafernandez18](https://github.com/LauraFernandez18)
+* **David Álvarez** [davidalvareez](https://github.com/davidalvareez)
+* **Diego Soledispa** [Dsoledispa](https://github.com/Dsoledispa)
 
-Este proyecto ha sido realizado por David Alvarez Rodriguez
-
-##Expresiones de Gratitud 🎁##
+## Expresiones de Gratitud 🎁
 
     Comenta a tu familia sobre este proyecto o a través de las redes sociales 📢
     Invita una cerveza 🍺 o un café ☕ a alguien del equipo, o me pasas un bizum al 670908765 (preferiblemente BIZUM que no me gusta ni el cafe ni la cerveza).
