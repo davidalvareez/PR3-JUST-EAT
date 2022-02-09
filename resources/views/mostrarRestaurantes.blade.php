@@ -31,13 +31,15 @@
         <table class="productos">
             <tr>
                 <td class="td25">
-                    <span class="">NombreFiltro</span>
-                    <input class="" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
-                    <span class="">Todas las cocinas A-Z</span>
-                    <ul id="lateral">
+                    <div class="div_filtro">
+                        <span class="">Nombre</span>
+                        <input class="inputfiltro" type="text" onkeyup="leerJS()" name="" id="filtro"><br>
+                        <span class="">Todas las cocinas A-Z:</span>
+                        <ul class="ulfiltro" id="lateral">
+                    </div>
                     </ul>
                 </td>
-                <td class="td75" id="cuadro">
+                <td class="td75filtro" id="cuadro">
                 </td>
             </tr>
         </table>
