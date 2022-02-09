@@ -51,10 +51,6 @@
                 <h1 class="h1_modal" id="nombreRestaurante"></h1>
             </div>
             <div class="modal-body" id="mbody">
-                <p id="precio"></p>
-                <p id="tipo"></p>
-                <p id="tipo2"></p>
-                <p id="descripcion"></p>
             </div>
         </div>
     </div>
