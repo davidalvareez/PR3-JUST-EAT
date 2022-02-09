@@ -67,6 +67,7 @@ SI NO TIENES GIT + GITHUB:
         · php artisan key:generate
         · php artisan storage:link
         
+    · Las imágenes para la página web puedes encontrarlas en public/img, debes añadirlas en public/storage/uploads para que puedan mostrarse.
         
 ## Construido con 🛠️
 
