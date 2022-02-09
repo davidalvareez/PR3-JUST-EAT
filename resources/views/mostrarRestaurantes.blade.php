@@ -48,13 +48,13 @@
         <div class="modal-content">
             <div class="modal-header" id="mheader">
                 <span class="close">&times;</span>
-                <h1 class="h1_modal" id="nombreRestaurante">Preuba</h1>
+                <h1 class="h1_modal" id="nombreRestaurante"></h1>
             </div>
             <div class="modal-body" id="mbody">
-                <p id="precio">Preuba</p>
-                <p id="tipo">Preuba</p>
-                <p id="tipo2">Preuba</p>
-                <p id="descripcion">Preuba</p>
+                <p id="precio"></p>
+                <p id="tipo"></p>
+                <p id="tipo2"></p>
+                <p id="descripcion"></p>
             </div>
         </div>
     </div>
