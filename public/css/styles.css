@@ -387,31 +387,89 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+}
   
-  /* Modal Content */
-  .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .h1_modal{
-      text-align: center;
-  }
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+.h1_modal{
+    text-align: center;
+}
+
+.div_filtro{
+    padding-bottom:77.5rem;
+}
+.inputfiltro{
+    width: 200px;
+    height: 25px;
+    margin-bottom: 0.5rem;
+    font-size: 15px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    outline: none;
+}
+.nacionalidad{
+    width: 250px;
+    height: 45px;
+    border-radius: 7px;
+    border-color: orangered;
+    background-color: white;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.5s ease;
+    position: relative;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    outline: none;
+}
+.nacionalidad:hover {
+    background: orangered;
+    color: #fff !important;
+}
+.ulfiltro{
+    list-style:none;
+    padding:0;
+}
+.td75filtro{
+    width:75%;
+    padding-bottom: 400px;
+}
+.td10{
+    width:10%;
+}
+.td60{
+    width:60%;
+    padding-left: 20px;
+}
+.cartafiltrada{
+    width:60%;
+    padding-left: 20px;
+    padding-bottom: 500px;;
+}
+.tablaproductosfiltrados{
+    width:100%;
+    margin-top: -800px;
+}
+.valoracion{
+    color: green;
+}
